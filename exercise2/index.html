@@ -1,23 +1,101 @@
-<!-- prompt 1 -->
-
 <!DOCTYPE html>
 <html>
 <head>
 <title>exercise 2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navbar a {
+  float: right;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
 </head>
 <body>
 
-<!-- prompt 2 -->
+<div class="navbar">
+  <a href="https://andyjung82.github.io/CRP558/#home">Home</a>
+  <a href="#news">News</a>
+  <div class="dropdown">
+    <button class="dropbtn">CRP 558 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="https://andyjung82.github.io/CRP558/exercise1/">exercise 1</a>
+      <a href="https://andyjung82.github.io/CRP558/exercise2/">exercise 2</a>
+      <a href="https://github.com/andyjung82/CRP558/blob/master/exercise3/iowa_cemeteries_geojson.geojson">exercise 3</a>
+      <a href="https://andyjung82.github.io/CRP558/exercise4/">exercise 4</a>
+    </div>
+  </div> 
+</div>
+
 <h1 style="color:red;">Beardshear Hall</h1>
 <p>I am interested in Beardshear Hall.<br>This building was constructed in <i>1906</i>, and it has a classic design than other surrounding structures.</p>
 
-<!-- prompt 3 -->
 <p><strong>Beardshear Hall</strong> <br><img src="https://www.fpm.iastate.edu/maps/buildings/photos/13.jpg"></p>
 
-<!-- prompt 4 -->
 <p><strong>Iowa State University</strong><br><img src="iastate.jpg"></p>
 
-<!-- prompt 5 -->
 <p><i>Location</i><br><iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-93.6499687513529%2C42.02505333808013%2C-93.64659989683018%2C42.02716533686862&amp;layer=mapnik" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=18/42.02611/-93.64828">View Larger Map</a></small></p>
+  
 </body>
 </html>
