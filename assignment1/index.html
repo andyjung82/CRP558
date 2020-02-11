@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<title>assignment 1</title>
+
+</head>
+
+<body>
+	<h1>Assignment 1</h1>
+    
+	<h2>Functions</h2>
+
+          <p><strong>Code</strong></p>   
+          <p>function myFunction(a, b, c) {<br>
+              return a * b + c;<br>
+            }<br>
+            document.getElementById("demo1").innerHTML = myFunction(12, 2, 8);</p>   
+          <p><strong>Result</strong></p>         
+          <p id="demo1"></p>
+
+          <script>
+            function myFunction(a, b, c) {
+              return a * b + c;
+            }
+            document.getElementById("demo1").innerHTML = myFunction(12, 2, 8);
+          </script>
+
+    <h2>Arrays</h2>
+    
+          <p><strong>Code</strong></p>   
+          <p>var fruits = ["Banana", " Apple", " Peach", " Mango"];<br>
+          document.getElementById("demo2").innerHTML = fruits;</p>
+          <p><strong>Result</strong></p>          
+          <p id="demo2"></p>
+
+          <script>
+          var fruits = ["Banana", " Apple", " Peach", " Mango"];
+          document.getElementById("demo2").innerHTML = fruits;
+          </script>
+
+    <h2>Objects</h2>
+
+    <p><strong>Code</strong></p>
+    <p>var car = {<br>
+      carName: "Panamera",<br>
+      carBrand: "Porsche",<br>
+      price: 87200,<br>
+      color: "white"<br>
+    };<br>
+    document.getElementById("demo3").innerHTML =<br>
+    car.carName + " of " + car.carBrand + " costs " + " $ " + car.price + ".";</p>
+    
+    <p><strong>Result</strong></p>      
+    <p id="demo3"></p>
+
+    <script>
+    // Create an object:
+	  var car = {
+      carName: "Panamera",
+      carBrand: "Porsche",
+      price: "87,200",
+      color: "white"
+    };
+
+    // Display some data from the object:
+    document.getElementById("demo3").innerHTML =
+    car.carName + " of " + car.carBrand + " costs " + " $ " + car.price + ".";
+    </script>
+
+    <h2>Loop</h2>
+
+    <p><strong>Code</strong></p>
+	<p>var text = "";<br>
+    var i;<br>
+    for (i = 0; i < fruits.length; i++) {<br>
+      text += fruits[i] + "<br>";<br>
+    }<br>
+    document.getElementById("demo4").innerHTML = text;</p>
+
+    <p><strong>Result</strong></p> 
+	<p id="demo4"></p>
+
+
+    <script>
+    var text = "";
+    var i;
+    for (i = 0; i < fruits.length; i++) {
+      text += fruits[i] + "<br>";
+    }
+    document.getElementById("demo4").innerHTML = text;
+    </script>
+    
+    <h2>Loop and Button</h2>   
+    <p><strong>Code</strong></p> 
+    <p>function func() {<br>
+      var meals;<br>
+      var time = new Date().getHours();<br>
+      if (time < 10) {<br>
+        meals = "Breakfast";<br>
+      } else if (time < 17) {<br>
+        meals = "Lunch";<br>
+      } else {<br>
+        meals = "Dinner";<br>
+      }<br>
+      document.getElementById("demo5").innerHTML = meals;<br>
+    }<br></p>
+    
+	<p><strong>Result</strong></p> 
+    <button onclick="func()">Click</button>
+    <p id="demo5"></p>
+
+    <script>
+    function func() {
+      var meals;
+      var time = new Date().getHours();
+      if (time < 10) {
+        meals = "Breakfast";
+      } else if (time < 17) {
+        meals = "Lunch";
+      } else {
+        meals = "Dinner";
+      }
+      document.getElementById("demo5").innerHTML = meals;
+    }
+    </script>
+    
+</body>
+</html>
