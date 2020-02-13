@@ -1,25 +1,27 @@
+
 <!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2020 by anonymous (http://jsbin.com/genihanihu/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
 <html>
-
 <head>
-
-	<title>assignment 1</title>
+  <meta charset="utf-8">
+    <title>assignment 1</title>
 
 </head>
-
 <body>
-	<h1>Assignment 1</h1>
-    
-	<h2>Functions</h2>
+  <h1>Assignment 1</h1>
+    <h2>1. Functions</h2>
 
-          <p><strong>Code</strong></p>   
-          <p>function myFunction(a, b, c) {<br>
-              return a * b + c;<br>
-            }<br>
-            document.getElementById("demo1").innerHTML = myFunction(12, 2, 8);</p>   
-          <p><strong>Result</strong></p>         
+          <p><strong>12 * 2 + 8 = ?</strong></p>   
           <p id="demo1"></p>
-
+          
           <script>
             function myFunction(a, b, c) {
               return a * b + c;
@@ -27,124 +29,139 @@
             document.getElementById("demo1").innerHTML = myFunction(12, 2, 8);
           </script>
 
-    <h2>Arrays</h2>
+    <h2>2. Arrays</h2>
     
-          <p><strong>Code</strong></p>   
-          <p>var fruits = ["Banana", " Apple", " Peach", " Mango"];<br>
-          document.getElementById("demo2").innerHTML = fruits;</p>
-          <p><strong>Result</strong></p>          
+          <p><strong>Fruits </strong></p>   
           <p id="demo2"></p>
 
           <script>
-          var fruits = ["Banana", " Apple", " Peach", " Mango"];
-          document.getElementById("demo2").innerHTML = fruits;
+            var fruits = ["Banana", " Apple", " Peach", " Mango"];
+            document.getElementById("demo2").innerHTML = fruits;
           </script>
 
-    <h2>Objects</h2>
-
-    <p><strong>Code</strong></p>
-    <p>var car = {<br>
-      carName: "Panamera",<br>
-      carBrand: "Porsche",<br>
-      price: 87200,<br>
-      color: "white"<br>
-    };<br>
-    document.getElementById("demo3").innerHTML =<br>
-    car.carName + " of " + car.carBrand + " costs " + " $ " + car.price + ".";</p>
+    <h2>3. Objects</h2>
     
-    <p><strong>Result</strong></p>      
-    <p id="demo3"></p>
+        <p><strong>How much is apples?</strong></p>      
+        <p id="demo3"></p>
 
-    <script>
-    // Create an object:
-	  var car = {
-      carName: "Panamera",
-      carBrand: "Porsche",
-      price: "87,200",
-      color: "white"
-    };
+        <script>
+            var fruit = {
+            name: "Apples",
+            from: "WA State",
+            price: "1.9",
+            weight: "lbs"
+          };
 
-    // Display some data from the object:
-    document.getElementById("demo3").innerHTML =
-    car.carName + " of " + car.carBrand + " costs " + " $ " + car.price + ".";
-    </script>
+            document.getElementById("demo3").innerHTML =
+            fruit.name + " from " + fruit.from + " costs " + " $" + fruit.price + " / " +fruit.weight;
+        </script>
 
-    <h2>Loop</h2>
+    <h2>4. Loop</h2>
 
-    <p><strong>Code</strong></p>
-	<p>var text = "";<br>
-    var i;<br>
-    for (i = 0; i < fruits.length; i++) {<br>
-      text += fruits[i] + "<br>";<br>
-    }<br>
-    document.getElementById("demo4").innerHTML = text;</p>
+        <p><strong>Fruits </strong></p>
+        <p id="demo4"></p>
 
-    <p><strong>Result</strong></p> 
-	<p id="demo4"></p>
+        <script>
+            var text = "";
+            var i;
+            for (i = 0; i < fruits.length; i++) {
+              text += fruits[i] + "<br>";
+            }
+            document.getElementById("demo4").innerHTML = text;
+        </script>
 
-
-    <script>
-    var text = "";
-    var i;
-    for (i = 0; i < fruits.length; i++) {
-      text += fruits[i] + "<br>";
-    }
-    document.getElementById("demo4").innerHTML = text;
-    </script>
+    <h2>5. If else & Buttons</h2>   
     
-    <h2>Loop and Button</h2>   
-    <p><strong>Code</strong></p> 
-    <p>function func() {<br>
-      var meals;<br>
-      var time = new Date().getHours();<br>
-      if (time < 10) {<br>
-        meals = "Breakfast";<br>
-      } else if (time < 17) {<br>
-        meals = "Lunch";<br>
-      } else {<br>
-        meals = "Dinner";<br>
-      }<br>
-      document.getElementById("demo5").innerHTML = meals;<br>
-    }<br></p>
-    
-	<p><strong>Result</strong></p> 
-    <button onclick="func()">Click</button>
-    <p id="demo5"></p>
+        <p><strong>It's time for eating _______.</strong></p>
+        <button onclick="func()">Click</button>
+        <p id="demo5"></p>
 
-    <script>
-    function func() {
-      var meals;
-      var time = new Date().getHours();
-      if (time < 10) {
-        meals = "Breakfast";
-      } else if (time < 17) {
-        meals = "Lunch";
-      } else {
-        meals = "Dinner";
-      }
-      document.getElementById("demo5").innerHTML = meals;
-    }
-    </script>
+        <script>
+            function func() {
+              var meals;
+              var time = new Date().getHours();
+              if (time < 10) {
+                meals = "Breakfast";
+              } else if (time < 17) {
+                meals = "Lunch";
+              } else {
+                meals = "Dinner";
+              }
+              document.getElementById("demo5").innerHTML = meals;
+            }
+        </script>
     
-    <h2>Input and Output</h2>
-    <p><strong>Code</strong></p>
-    <p></p>
-    
-    <p><strong>Result</strong></p>
-    <strong>What is your job title?</strong></br>
-    Job Title: <input type="text" id="firstName" value="CEO"><br><br>
+    <h2>6. Input</h2>
+     
+        <strong>What is your job title?</strong></br>
+        Job Title: <input type="text" id="firstName" value="CEO"><br><br>
 
-	<strong>What is your gender?</strong><br>
-    <input type="radio" id="gender1" name="sex" value="male">Male<br>
-    <input type="radio" id="gender2" name="sex" value="female">Female<br><br>
+        <strong>What is your gender?</strong><br>
+        <input type="radio" id="gender1" name="sex" value="male">Male<br>
+        <input type="radio" id="gender2" name="sex" value="female">Female<br>
+        <input type="radio" id="gender3" name="sex" value="none">None<br>
 
-    
-    <br><em><strong>Click to update display</strong></em><br>
-    
-    <button type="button" onclick="displayFunction()">Display</button>
-    
-    <p id="display"></p>
-    
+    <h2>7. Output</h2> 
+      
+    <body onload="load()">
+    <input type="button" onclick="fruitList(1)" value="Change fruit">
+    <br>
+    <b>Fruits</b><br>
+    name: <span id='kind'>-</span><br>
+    from: <span id='color'>-</span><br>
+    price: <span id='quantity'>-</span><br>
+    weight: <span id='tasty'>-</span><br>
 
+          
+<script id="jsbin-javascript">
+//make an array of objects
+var fruits = [
+	{
+	kind: "banana",
+	color: "Philippines",
+	quantity: 0.56,
+	tasty: "lbs"
+	},
+	{
+   kind: "apple", 
+   color: "WA State", 
+   quantity: 1.67, 
+   tasty: "lbs"
+    },
+	{
+	kind: "peach",
+	color: "CA State",
+	quantity: 2.58,
+	tasty: "lbs"
+	}
+  
+];
+
+
+var listCount = 0;
+
+
+function fruitList() {
+	listCount = listCount + 1;
+	//check to see if it is larger than the list. If so reset to 0.
+	if (listCount >= (fruits.length)) {  
+		listCount = 0;
+	}
+	
+	i = listCount;
+	document.getElementById("kind").innerHTML = fruits[i].kind;
+	document.getElementById("color").innerHTML = fruits[i].color;
+	document.getElementById("quantity").innerHTML = fruits[i].quantity;
+	document.getElementById("tasty").innerHTML = fruits[i].tasty;
+}
+
+	
+function load() {
+	document.getElementById("kind").innerHTML = fruits[0].kind;
+	document.getElementById("color").innerHTML = fruits[0].color;
+	document.getElementById("quantity").innerHTML = fruits[0].quantity;
+	document.getElementById("tasty").innerHTML = fruits[0].tasty;
+}
+</script>
 </body>
 </html>
