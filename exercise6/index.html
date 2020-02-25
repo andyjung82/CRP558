@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2020 by anonymous (http://jsbin.com/sopopocaxe/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+
+<head>
+    <meta name="description" content="CRP 558 Leaflet starter file - 2020">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Exercise 5</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin=""></script>
+
+    <style>
+        #map {
+            width: 1000px;
+            height: 750px;
+        }
+        
+    </style>
+
+</head>
+
+<body>
+    <div id='map'></div>
+
+    <script>
+        var map = L.map('map').setView([39.02764, 125.72622], 13);
+
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            // This is a unique access token, you must register for your own from https://account.mapbox.com/access-tokens/
+            accessToken: 'pk.eyJ1IjoiYW5keWp1bmc4MiIsImEiOiJjazZzaTNoMW0waDBjM2VzNWEzamRhZjBmIn0.Kad1B1eQgTP5ASm6JM7-WA' 
+        }).addTo(map);
+
+        L.marker([39.02764, 125.72622]).addTo(map)
+            .bindPopup("Pyongyang")
+            .openPopup();
+   
+      L.circle([39.0334, 125.6928], {
+	radius: 800,
+	fill: true, //could be false
+	color: 'red', //the outline color
+	fillColor: 'red',
+	fillOpacity: 0.5  //this represents 80%
+ }).bindPopup("This is a circle").addTo(map);
+      
+      var exampleMarker = new L.circleMarker([39.0383, 125.7428], {
+          radius: 30,  //in pixels
+          fillColor: 'blue',
+          color: "#000",  //this is black color outline
+          weight: 2, //outline weight is thickness of outline
+          opacity: 1, //opacity of the outline
+          fillOpacity: 0.4   
+      }).bindPopup("This is a circle marker").addTo(map);
+      
+      
+      var polygon = L.polygon([
+    [39.0131, 125.7176],
+    [39.0182, 125.7172],
+    [39.0203, 125.7257],
+    [39.0125, 125.7259]
+ 
+]).addTo(map);
+      
+            var polylinePoints = [
+        [39.027, 125.7416],
+        [39.0147, 125.7296],
+        [39.0267, 125.7255]
+      ];            
+      
+      var polyline = L.polyline(polylinePoints).addTo(map); 
+      
+      
+      
+      
+        //loop through the array and add a marker for each
+        for (var i = 0; i < towns.length; i++) {
+            marker = new L.marker([towns[i][0], towns[i][1]])
+                .bindPopup(towns[i][2])
+                .addTo(map);
+        }
+
+
+        //----------Links below the Map----------
+
+
+        //add an event listener for a click event on the button
+        document.getElementById("SeoulBtn").addEventListener("click", SeoulBtn);
+
+    </script>
+
+</body>
+</html>
