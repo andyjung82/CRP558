@@ -22,6 +22,72 @@ Released under the MIT license: http://jsbin.mit-license.org
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
         integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
         crossorigin=""></script>
+	
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
 
     <style>
         #map {
@@ -34,6 +100,25 @@ Released under the MIT license: http://jsbin.mit-license.org
 </head>
 
 <body>
+	
+<div class="navbar">
+  <a href="https://andyjung82.github.io/CRP558/#home">Home</a>
+  <div class="dropdown">
+    <button class="dropbtn">CRP 558
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="https://andyjung82.github.io/CRP558/exercise1/">exercise 1</a>
+      <a href="https://andyjung82.github.io/CRP558/exercise2/">exercise 2</a>
+      <a href="https://github.com/andyjung82/CRP558/blob/master/exercise3/iowa_cemeteries_geojson.geojson">exercise 3</a>
+      <a href="https://andyjung82.github.io/CRP558/exercise4/">exercise 4</a>
+      <a href="https://andyjung82.github.io/CRP558/exercise5/">exercise 5</a>
+      <a href="https://andyjung82.github.io/CRP558/exercise6/">exercise 6</a>
+      <a href="https://andyjung82.github.io/CRP558/assignment1/">assignment 1</a>
+      </div>
+  </div> 
+</div>	
+	
     <div id='map'></div>
 
     <script>
