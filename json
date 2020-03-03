@@ -1,0 +1,107 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "stroke": "#2d32ff",
+        "stroke-width": 3,
+        "stroke-opacity": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            136.20849609375,
+            35.53222622770337
+          ],
+          [
+            137.63671875,
+            36.421282443649496
+          ],
+          [
+            139.482421875,
+            37.07271048132943
+          ],
+          [
+            140.537109375,
+            38.30718056188316
+          ],
+          [
+            140.99853515625,
+            39.40224434029275
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stroke": "#555555",
+        "stroke-width": 1.5,
+        "stroke-opacity": 1,
+        "fill": "#a32525",
+        "fill-opacity": 0.5
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              137.52685546875,
+              35.04798673426734
+            ],
+            [
+              138.6474609375,
+              35.04798673426734
+            ],
+            [
+              138.6474609375,
+              35.94243575255426
+            ],
+            [
+              137.52685546875,
+              35.94243575255426
+            ],
+            [
+              137.52685546875,
+              35.04798673426734
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#c13c3c",
+        "marker-size": "medium",
+        "marker-symbol": "bus",
+        "name": "end point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          136.16455078125,
+          35.51434313431818
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#0bb5b9",
+        "marker-size": "medium",
+        "marker-symbol": "bus",
+        "name": "starting point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          140.99853515625,
+          39.41922073655956
+        ]
+      }
+    }
+  ]
+}
