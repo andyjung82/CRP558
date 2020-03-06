@@ -33,9 +33,7 @@
 
 <div id='map'></div>
 
-<script type="text/javascript" src="../geojson/sea3.geojson"></script>
-
-<script type="text/javascript">
+<script>
 
         var map = L.map('map').setView([47.6066, -122.3232], 10);
 
@@ -47,8 +45,29 @@
             accessToken: 'pk.eyJ1IjoiYW5keWp1bmc4MiIsImEiOiJjazZzaTNoMW0waDBjM2VzNWEzamRhZjBmIn0.Kad1B1eQgTP5ASm6JM7-WA' 
         }).addTo(map);
 
-        L.geoJSON(sea).addTO(map);
- 
+function getColor(d) {
+  return d <= '1' ? '#9F0410' :
+    d <= 12000 ? "#3B87E2" :
+    d <= 9000 ? "#4DC0FF" :
+    d <= 6000 ? "#7DE723" :
+    d <= 3000 ? "#B1FF0F" :
+    "#FFFFFF"; //white
+}
+  
+function style(feature) {
+    return {
+        fillColor: getColor(feature.properties.TRACT),
+        weight: 1,
+        opacity: 1,
+        color: 'white',
+        dashArray: '2',
+        fillOpacity: 0.7
+    };
+}
+  
+url = "../geojson/sea3.geojson";
+        
+var geojsonLayer = new L.GeoJSON.sea3(url).addTo(map);
 </script>
 
 </body>
