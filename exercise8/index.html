@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="CRP 558" content="exercise 8">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>exerxise 8</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-    crossorigin=""> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-    crossorigin=""></script>
-<style>
+	
+	<title>geoJSON</title>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+
+  <style>
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -76,18 +76,28 @@ body {
 .dropdown:hover .dropdown-content {
   display: block;
 }
-
-  #map {
-            width: 750px;
-            height: 550px;
-}
 </style>
+	<style>
+		html, body {
+			height: 100%;
+			margin: 0;
+		}
+		#map {
+			width: 600px;
+			height: 400px;
+		}
+	</style>
+
+	<style>#map { width: 900px; height: 800px; }
+.info { padding: 6px 8px; font: 14px/16px Arial, Helvetica, sans-serif; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; } .info h4 { margin: 0 0 5px; color: #777; }
+.legend { text-align: left; line-height: 18px; color: #555; } .legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }</style>
 </head>
+  
 <body>
 <div class="navbar">
   <a href="https://andyjung82.github.io/CRP558/#home">Home</a>
   <div class="dropdown">
-    <button class="dropbtn">CRP 558 
+    <button class="dropbtn">CRP 558
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
@@ -102,36 +112,83 @@ body {
       <a href="https://andyjung82.github.io/CRP558/exercise9/">exercise 9</a>
       <a href="https://andyjung82.github.io/CRP558/exercise10/">exercise 10</a>
       <a href="https://andyjung82.github.io/CRP558/assignment1/">assignment 1</a>
-    </div>
+      </div>
   </div> 
 </div>
-  <div id='map'> </div>
+  
+<div id='map'></div>
 
-   <script>
-     console.clear();
+<script type="text/javascript" src="https://andyjung82.github.io/CRP558/exercise8_geojson/parks.geojson"></script>
+<script type="text/javascript" src="https://andyjung82.github.io/CRP558/exercise8_geojson/street.geojson"></script> 
+<script type="text/javascript" src="https://andyjung82.github.io/CRP558/exercise8_geojson/water.geojson"></script>   
+    
+<script type="text/javascript"> 
+	var map = L.map('map').setView([47.6530, -122.3226], 12);
 
-var myGeoJSON = {"type":"FeatureCollection","features":[{"type":"Feature","properties":{"stroke":"#2d32ff","stroke-width":3,"stroke-opacity":1},"geometry":{"type":"LineString","coordinates":[[136.20849609375,35.53222622770337],[137.63671875,36.421282443649496],[139.482421875,37.07271048132943],[140.537109375,38.30718056188316],[140.99853515625,39.40224434029275]]}},{"type":"Feature","properties":{"marker-color":"#c13c3c","marker-size":"medium","marker-symbol":"bus","name":"end point"},"geometry":{"type":"Point","coordinates":[136.16455078125,35.51434313431818]}},{"type":"Feature","properties":{"marker-color":"#0bb5b9","marker-size":"medium","marker-symbol":"bus","name":"starting point"},"geometry":{"type":"Point","coordinates":[140.99853515625,39.41922073655956]}},{"type":"Feature","properties":{"stroke":"#555555","stroke-width":2,"stroke-opacity":1,"fill":"#ff0000","fill-opacity":0.6},"geometry":{"type":"Polygon","coordinates":[[[135.85968017578125,35.59925232772949],[135.84320068359375,34.82282272723702],[136.69464111328125,35.40248356426937],[136.09588623046875,35.74205383068037],[135.85968017578125,35.59925232772949]]]}}]}
+	L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+		maxZoom: 18,
+		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+		id: 'mapbox/light-v9',
+		tileSize: 512,
+		zoomOffset: -1
+	}).addTo(map);
 
-var OSM = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-    maxZoom: 6
-});
 
-var map = L.map('map', {
-  center: new L.LatLng(36.2266, 138.6035),
-  zoom: 14,
-  layers: [OSM]
-});
-
-var myStyle = {
-    "color": "red",
-    "weight": 6,
+	// get color depending on population density value
+	
+    var myStyle1 = {
+    "color": "black",
+    "weight": 1,
     "opacity": 0.8,
-    fillColor: 'black',
+    fillColor: 'green',
 };
+    var myStyle2 = {
+    "color": "red",
+    "weight": 3,
+    "dashArray": 5,
+    "opacity": 0.8,
+};
+  
+   
+	function highlightFeature(e) {
+		var layer = e.target;
+	}
 
-L.geoJSON(myGeoJSON,{style: myStyle,}).addTo(map);
+	var geojson;
 
+	function resetHighlight(e) {
+		geojson.resetStyle(e.target);
+		info.update();
+	}
+
+	function zoomToFeature(e) {
+		map.fitBounds(e.target.getBounds());
+	}
+
+	function onEachFeature(feature, layer) {
+		layer.on({
+			mouseover: highlightFeature,
+			mouseout: resetHighlight,
+			click: zoomToFeature
+		});
+	}
+
+	var parks = new L.geoJson(parks, {
+      	style: myStyle1,
+		onEachFeature: onEachFeature
+	}).addTo(map);
+
+	var street = new L.geoJson(street, {
+      style: myStyle2,
+      onEachFeature: onEachFeature
+	}).addTo(map);
+ 
+ 	var water = new L.geoJson(water, {
+		onEachFeature: onEachFeature
+	}).addTo(map);
 </script>
+
 </body>
 </html>
