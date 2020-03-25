@@ -12,11 +12,13 @@
   <link href="https://fonts.googleapis.com/css?family=Ropa+Sans:400,400i&display=swap" rel="stylesheet">
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+  <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+  
+  <!-- Load in leaflet plugin -->
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
 
-     <!-- Load in Heat plugin -->
+  <!-- Load in Heat plugin -->
   <script src="https://leaflet.github.io/Leaflet.heat/dist/leaflet-heat.js"></script>
   <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
   
@@ -29,11 +31,13 @@
       color: #607D8B;
     }
 
+   /* Navigation bar container setting */
     .container {
       max-width: 700px;
       margin: auto;
     }
 
+   /* Navigation bar item setting */
     .nav-item {
       width: 100%;
       padding: 0;
@@ -66,7 +70,7 @@
 
     /* For the custom text space */
     .header-bar {
-      width: 80%;
+      width: 100%;
       padding: 30px;
       background: #e9e9e9;
     }
@@ -89,11 +93,12 @@
   
   
   <style>
-		html, body {
-			height: 100%;
-			margin: 0;
+	html, body {
+		height: 100%;
+		margin: 0;
 		}
-    /* Map design */
+
+    /* Map size setting*/
 		#map {
 			width: 100%;
 			height: 700px;
@@ -101,7 +106,7 @@
   </style>
   
   <style>
-    /* Legend design */
+    /* Legend design setting*/
     #map
     .legend {
     line-height: 30px;
@@ -130,7 +135,7 @@
 
 
 <body>
- <!-- Editing the header and navigation bar -->
+ <!-- Typing title & information in header and navigation bar -->
   <div class="header-bar">
     <div class="container">
       <h1 style=text-align:center;>EARTHQUAKE IN UTAH</h1>
@@ -152,7 +157,7 @@
     </div>
   </div>
  
- <!-- Editing the navigation bar -->
+ <!-- Insering an image file and typing texts-->
   <br>
   <h3 style=text-align:center>The Wasatch Fault, Utah</h1>
   <p style=text-align:center><img src="../assignment2_image/wasatch.jpg" width="600" alt="Wasatch Fault" /></p>
@@ -174,15 +179,16 @@ src="https://andyjung82.github.io/CRP558/assignment2_geojson/pop_den.geojson"></
   <script type="text/javascript"> 
 	var map = L.map('map').setView([39.5040, -111.5332], 7);
    
- /* Original map */   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-		maxZoom: 18,
-		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-		id: 'mapbox/light-v9',
-		tileSize: 512,
-		zoomOffset: -1
-	}).addTo(map);
+/* Original map */
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+	maxZoom: 18,
+	attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+		'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+		'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+	id: 'mapbox/light-v9',
+	tileSize: 512,
+	zoomOffset: -1
+}).addTo(map);
 
 /* Basemap 1 */  
 var Stamen_Toner = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.{ext}', {
@@ -226,10 +232,8 @@ var GeoportailFrance_orthos = L.tileLayer('https://wxs.ign.fr/{apikey}/geoportai
 			opacity: 1,
 			color: 'black',
 			dashArray: '2',
-			fillOpacity: 0.7,
-
-/* Selecting Density field of pop_den.geojson */
-			fillColor: getColor(feature.properties.Density)
+			fillOpacity: 0.7,	
+			fillColor: getColor(feature.properties.Density) /* Selecting Density field of pop_den.geojson */
 		};
 	}  
   
@@ -250,7 +254,7 @@ var GeoportailFrance_orthos = L.tileLayer('https://wxs.ign.fr/{apikey}/geoportai
 
 /* Making popup displays for the population density map */
 	function onEachFeature1(feature, layer) {
- /* County name, Population, Population Density */
+	     /* County name, Population, Population Density */
 		 layer.bindPopup("<strong>COUNTY </strong>" + feature.properties.County +"<br/>"+"<strong>POP </strong>" + feature.properties.Pop+"<br/>"+"<strong>POP DENSITY: </strong>" + feature.properties.Density);
         layer.on({
 			mouseover: highlightFeature,
@@ -260,7 +264,7 @@ var GeoportailFrance_orthos = L.tileLayer('https://wxs.ign.fr/{apikey}/geoportai
 
 /* Making popup displays for the earthquake map */
   function onEachFeature2(feature, layer) {
- /* Location, Time, Magnitude */
+	     /* Location, Time, Magnitude */
 		 layer.bindPopup("<strong>PLACE </strong>" + feature.properties.place +"<br/>"+"<strong>TIME </strong>" + feature.properties.time_+"<br/>"+"<strong>MAGNITUDE: </strong>" + feature.properties.mag);
         layer.on({
 			mouseover: highlightFeature,
@@ -268,7 +272,7 @@ var GeoportailFrance_orthos = L.tileLayer('https://wxs.ign.fr/{apikey}/geoportai
 		});
 	}
 
-/* Presenting geojson files in the map*/
+/* Presenting geojson files in the map */
       var den = new L.geoJson(den, /* Population density */{
             style: style,
         onEachFeature: onEachFeature1
@@ -295,7 +299,7 @@ var GeoportailFrance_orthos = L.tileLayer('https://wxs.ign.fr/{apikey}/geoportai
         }).addTo(map)
     });
 
-/* Setting the legend in the map */
+/* Setting legend in the map */
   var legend1 = L.control({position: 'bottomright'});
 
       legend1.onAdd = function (map) {
@@ -334,7 +338,7 @@ var GeoportailFrance_orthos = L.tileLayer('https://wxs.ign.fr/{apikey}/geoportai
 
   L.control.layers(baseMaps, overlayMaps).addTo(map);
 
-/* Making the legend appears / disappears when the Population Density layer turns on / off */
+/* Making the legend appears.disappears when the Population Density layer turns on.off */
   map.on('overlayremove', function (eventLayer) {
 	console.log(eventLayer.name  + " off");
 	if (eventLayer.name == "Population Density") {
@@ -349,12 +353,12 @@ var GeoportailFrance_orthos = L.tileLayer('https://wxs.ign.fr/{apikey}/geoportai
     }
   });      
   
-  //----------Links below the Map----------
+<!-- Setting an event when clicking the buttons -->
   
         //add an event listener for a click event on the button
         document.getElementById("world").addEventListener("click", world);
 
-        //Pan to STATE OF UTAH button
+        //VIEW WORLD MAP button
         function world() {
             map.setView(new L.LatLng(25.4830, -182.4609), 2);
         };    
@@ -362,7 +366,7 @@ var GeoportailFrance_orthos = L.tileLayer('https://wxs.ign.fr/{apikey}/geoportai
         //add an event listener for a click event on the button
         document.getElementById("utah").addEventListener("click", utah);
 
-        //Pan to STATE OF UTAH button
+        //VIEW STATE OF UTAH button
         function utah() {
             map.setView(new L.LatLng(39.5040, -111.5332), 7);
         };    
@@ -413,6 +417,5 @@ var GeoportailFrance_orthos = L.tileLayer('https://wxs.ign.fr/{apikey}/geoportai
 	- Source Data URL: <i>https://marlimillerphoto.com/images/130102-49.jpg</i> </p>
 </body>
 </html>
-
 
  <!-- Thank you -->
