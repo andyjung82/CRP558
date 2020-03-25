@@ -261,6 +261,7 @@ var GeoportailFrance_orthos = L.tileLayer('https://wxs.ign.fr/{apikey}/geoportai
 			color: 'black',
 			dashArray: '2',
 			fillOpacity: 0.7,
+
 /* Selecting Density field of pop_den.geojson */
 			fillColor: getColor(feature.properties.Density)
 		};
@@ -300,6 +301,7 @@ var GeoportailFrance_orthos = L.tileLayer('https://wxs.ign.fr/{apikey}/geoportai
 			mouseout: resetHighlight,
 		});
 	}
+
 /* Presenting geojson files in the map*/
       var den = new L.geoJson(den, /* Population density */{
             style: style,
@@ -310,7 +312,8 @@ var GeoportailFrance_orthos = L.tileLayer('https://wxs.ign.fr/{apikey}/geoportai
         onEachFeature: onEachFeature2
       }).addTo(map);
 
-/* Heat map code */   $.getJSON("https://andyjung82.github.io/CRP558/assignment2_geojson/Utah_fire.geojson", function(data) {
+/* Heat map code */
+      $.getJSON("https://andyjung82.github.io/CRP558/assignment2_geojson/Utah_fire.geojson", function(data) {
         var coords = data.features.map(feat => feat.geometry.coordinates.slice().reverse())
         var heat = L.heatLayer(coords, {
             minOpacity: 0.3, //the minimum opacity the heat will start at
@@ -364,7 +367,8 @@ var GeoportailFrance_orthos = L.tileLayer('https://wxs.ign.fr/{apikey}/geoportai
   };
 
   L.control.layers(baseMaps, overlayMaps).addTo(map);
-  
+
+/* Making the legend appears / disappears when the Population Density layer turns on / off */
   map.on('overlayremove', function (eventLayer) {
 	console.log(eventLayer.name  + " off");
 	if (eventLayer.name == "Population Density") {
@@ -396,354 +400,6 @@ var GeoportailFrance_orthos = L.tileLayer('https://wxs.ign.fr/{apikey}/geoportai
         function utah() {
             map.setView(new L.LatLng(39.5040, -111.5332), 7);
         };    
-  
-</script>
-	  
-<script id="jsbin-source-html" type="text/html"><!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Wasatch Fault</title>
-    
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""><\/script>
-
-     <\!--Load in Heat plugin -->
-  <script src="https://leaflet.github.io/Leaflet.heat/dist/leaflet-heat.js"><\/script>
-  <script src="https://code.jquery.com/jquery-3.1.0.js"><\/script>
-  
-<style>
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.navbar {
-  overflow: hidden;
-  background-color: #333;
-}
-
-.navbar a {
-  float: left;
-  font-size: 16px;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
-
-.dropdown .dropbtn {
-  font-size: 16px;  
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-}
-
-.navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: orange;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 9999;
-}
-
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-</style>
-  
-<style>
-		html, body {
-			height: 100%;
-			margin: 0;
-		}
-		#map {
-			width: 500px;
-			height: 650px;
-		}
-	</style>
-  
-  <style>
-    #map
-.legend {
-    line-height: 30px;
-    color: #555;
-}
-.legend i {
-    width: 20px;
-    height: 20px;
-    float: left;
-    margin-right: 8px;
-    opacity: 0.9;
-}
-.info {
-    padding: 10px 10px;
-    font: 10px/20px Arial, Helvetica, sans-serif;
-    background: rgba(255,255,255,0.8);
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    border-radius: 5px;
-	width: 120px;
-}
-.info h4 {
-    margin: 0 0 5px;
-    color: #777;
-
-</head>
-  
-<div class="navbar">
-
-  <div class="dropdown">
-    <button class="dropbtn">CRP 558</button>
-    <div class="dropdown-content">
-      <a href="https://andyjung82.github.io/CRP558/#home">Home</a>  
-      <a href="https://andyjung82.github.io/CRP558/exercise1/">Exercise 1</a>
-      <a href="https://andyjung82.github.io/CRP558/exercise2/">Exercise 2</a>
-      <a href="https://github.com/andyjung82/CRP558/blob/master/exercise3/iowa_cemeteries_geojson.geojson">exercise 3</a>
-      <a href="https://andyjung82.github.io/CRP558/exercise4/">Exercise 4</a>
-      <a href="https://andyjung82.github.io/CRP558/exercise5/">Exercise 5</a>
-      <a href="https://andyjung82.github.io/CRP558/exercise6/">Exercise 6</a>
-      <a href="https://andyjung82.github.io/CRP558/exercise7/">Exercise 7</a>
-      <a href="https://andyjung82.github.io/CRP558/exercise8/">Exercise 8</a>
-      <a href="https://andyjung82.github.io/CRP558/exercise9/">Exercise 9</a>
-      <a href="https://andyjung82.github.io/CRP558/exercise10/">Exercise 10</a>
-      <a href="https://andyjung82.github.io/CRP558/assignment1/">Assignment 1</a>
-      <a href="https://andyjung82.github.io/CRP558/assignment2/">Assignment 2</a>
-    </div>
-  </div>
-  <a href="https://www.utah.gov/index.html">Utah.gov</a>
-  <a href="https://en.wikipedia.org/wiki/United_States_Geological_Survey">USGS</a>
-  <a href="https://en.wikipedia.org/wiki/Richter_magnitude_scale">Richter Scale</a>
-  <a href="https://en.wikipedia.org/wiki/Google_Earth">Google Earth</a>
-</div>
-
-<body>
-<h1>The Wasatch Fault, Utah</h1>
-  <p><img src="../assignment2_image/wasatch.jpg"></p>
-  <p><b>The Wasatch Fault</b> is located on the western edge of the Wasatch Mountains in the states of <i>Utah</i> and <i>Idaho</i>. The Fault is <b>390 kilometers</b> long, stretching from southern <i>Idaho</i> to central <i>Utah</i>. The five segments of the Fault are considered active. The segments are called <strong>the Nephi Fault segment</strong>, <strong>the Provo Fault segment</strong>, <strong>the Salt Lake City Fault segment</strong>, <strong>the Weber Fault segment</strong>, and <strong>the Brigham City Fault segment</strong>. On average the active segments are <b>40 kilometers</b> long, each of which can produce powerful earthquakes whose magnitude is <b>above 6.0</b>. </p>
-<h2>The Earthquake-Vulnerability Map in Utah</h2>
-<div id='map'></div>
-  <button id="utah">VIEW <em><strong>STATE OF UTAH</strong></em></button>&nbsp;<button id="world">VIEW <em><strong>WORLD MAP</strong></em></button>
-  
-<!-- Setting the source of geojson files for Javascript -->
-<script type="text/javascript" src="https://andyjung82.github.io/CRP558/assignment2_geojson/pop_den.geojson"><\/script>
-<script type="text/javascript" src="https://andyjung82.github.io/CRP558/assignment2_geojson/utah_earthquake4.geojson"><\/script>
-    
-<script type="text/javascript"> 
-	var map = L.map('map').setView([39.5040, -111.5332], 7);
-
-<!-- Base map -->	L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-		maxZoom: 18,
-		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-		id: 'mapbox/light-v9',
-		tileSize: 512,
-		zoomOffset: -1
-	}).addTo(map);
-
-<!-- Base map 1 -->
-    var Stamen_Toner = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.{ext}', {
-      attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      subdomains: 'abcd',
-      minZoom: 0,
-      maxZoom: 20,
-      ext: 'png'
-    });
-
-<!-- Base map 2-->
-    var OpenTopoMap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
-      maxZoom: 18,
-      attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
-    });
-
-<!-- Base map 3 -->
-    var GeoportailFrance_orthos = L.tileLayer('https://wxs.ign.fr/{apikey}/geoportail/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE={style}&TILEMATRIXSET=PM&FORMAT={format}&LAYER=ORTHOIMAGERY.ORTHOPHOTOS&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}', {
-      attribution: '<a target="_blank" href="https://www.geoportail.gouv.fr/">Geoportail France</a>',
-      bounds: [[-75, -180], [81, 180]],
-      minZoom: 2,
-      maxZoom: 18,
-      apikey: 'choisirgeoportail',
-      format: 'image/jpeg',
-      style: 'normal'
-    });
-
-<!-- Setting colors for the legend in the map -->
-	function getColor(d) {
-		return 	    d > 483.600001   ? '#e31a1c' :
-                d > 350.600001   ? '#fc4e2a' :
-                d > 96.000001    ? '#fd8d3c' :
-                d > 19.500001    ? '#feb24c' :
-                d > 8.000001     ? '#fed976' :
-                                   '#ffffcc';
-	}
-
-	function style(feature) {
-		return {
-			weight: 1,
-			opacity: 1,
-			color: 'black',
-			dashArray: '2',
-			fillOpacity: 0.7,
-			fillColor: getColor(feature.properties.Density)
-		};
-	}
-
-	function highlightFeature(e) {
-		var layer = e.target;
-	}
-
-	var geojson;
-
-	function resetHighlight(e) {
-		geojson.resetStyle(e.target);
-		info.update();
-	}
-
-	function zoomToFeature(e) {
-		map.fitBounds(e.target.getBounds());
-	}
-
-<!-- Making popup display when click a feature -->
-  function onEachFeature1(feature, layer) {
-		 layer.bindPopup("<strong>COUNTY </strong>" + feature.properties.County +"<br/>"+"<strong>POP </strong>" + feature.properties.Pop+"<br/>"+"<strong>POP DENSITY: </strong>" + feature.properties.Density);
-        layer.on({
-			mouseover: highlightFeature,
-			mouseout: resetHighlight,
-		});
-	}
-
-  function onEachFeature2(feature, layer) {
-		 layer.bindPopup("<strong>PLACE </strong>" + feature.properties.place +"<br/>"+"<strong>TIME </strong>" + feature.properties.time_+"<br/>"+"<strong>MAGNITUDE: </strong>" + feature.properties.mag);
-        layer.on({
-			mouseover: highlightFeature,
-			mouseout: resetHighlight,
-		});
-	}
-
-<!-- Presenting geoJson file in the map -->
-      var den = new L.geoJson(den, {
-            style: style,
-        onEachFeature: onEachFeature1
-      }).addTo(map);
-
-      var eq = new L.geoJson(eq, {
-        onEachFeature: onEachFeature2
-      }).addTo(map);
-
-<!-- Heat map code -->      $.getJSON("https://andyjung82.github.io/CRP558/assignment2_geojson/Utah_fire.geojson", function(data) {
-        var coords = data.features.map(feat => feat.geometry.coordinates.slice().reverse())
-        var heat = L.heatLayer(coords, {
-            minOpacity: 0.3, //the minimum opacity the heat will start at
-            maxZoom: 19, //zoom level where the points reach maximum intensity (as intensity scales with zoom), equals maxZoom of the map by default
-            max: 1.0, //maximum point intensity, 1.0 by default
-            radius: 25, //radius of each "point" of the heatmap, 25 by default
-            blur: 15, //amount of blur, 15 by default
-            gradient: {
-              0.2: 'green',
-              0.65: 'yellow',
-              1: 'red'
-            }
-        }).addTo(map)
-    });
-    
-<!-- Setting the legend contents -->
-  var legend1 = L.control({position: 'bottomright'});
-
-      legend1.onAdd = function (map) {
-
-        var div = L.DomUtil.create('div', 'info legend'),
-          grades = ["1.0", "8.0", "19.5", "96.0", "350.6", "483.6"],
-          labels = ["<b>Population Density 2015</b>"],
-          from, to;
-
-        for (var i = 0; i < grades.length; i++) {
-          from = grades[i];
-          to = grades[i + 1];
-
-          labels.push(
-            '<i style="background:' + getColor(from + 1) + '"></i> ' +
-            from + (to ? '&ndash;' + to : '-1274.7'));
-        }
-
-        div.innerHTML = labels.join('<br>');
-        return div;
-      };
-
-      legend1.addTo(map);
-  
-<!-- Making a layer control button -->
-  var baseMaps = { <!-- Three basemaps -->
-    "Black & White View": Stamen_Toner,
-    "Terrain View": OpenTopoMap,
-    "Satellite View": GeoportailFrance_orthos,
-  };
-
-  var overlayMaps = { <!-- Two vector overlay maps -->
-    "Earthquakes": eq,
-    "Population Density": den,
-  };
-
-  L.control.layers(baseMaps, overlayMaps).addTo(map);
-
-<!-- Making the legend appear/disappear when Population Density layer turns on/off -->
-  map.on('overlayremove', function (eventLayer) {
-	console.log(eventLayer.name  + " off");
-	if (eventLayer.name == "Population Density") {
-		this.removeControl(legend1);
-	}
-});
-
-  map.on('overlayadd', function (eventLayer) {
-    console.log(eventLayer.name + " on");
-    if (eventLayer.name == "Population Density") {
-       legend1.addTo(this);
-    }
-  });
-
-//----------Links below the Map----------//
-
-<!-- add an event listener for a click event on the button --> document.getElementById("world").addEventListener("click", world);
-
-   //Pan to STATE OF UTAH button
-   function world() {
-    map.setView(new L.LatLng(25.4830, -182.4609), 2);
-        };
-
-<!-- add an event listener for a click event on the button -->
-        document.getElementById("utah").addEventListener("click", utah);
-//Pan to STATE OF UTAH button
-   function utah() {
-    map.setView(new L.LatLng(39.5040, -111.5332), 7);
-        };
   
 </script>
 </body>
