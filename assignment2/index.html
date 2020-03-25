@@ -1,10 +1,9 @@
-<!-- CRP 558 Assignment 2 Meen Wook Jung Code -->
-<!-- All geoJson files are in the assignment2_geojson folder (GitHub) Please check them -->
-<!-- All image files are in the assignment2_image folder (GitHub) Please check them -->
-
 <!DOCTYPE html>
+<!-- Open HTML Tag and Declare that the document being rendered is an HTML document -->
+
 <html lang="en">
 
+<!-- Open Head Tag -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -135,11 +134,13 @@
             margin: 0 5px;
             color: #777;
     </style>
+    
+<!-- Close Head Tag -->
 </head>
 
-
+<!-- Open Body Tag -->
 <body>
-    <!-- Typing title & information in header and navigation bar -->
+    <!-- Types title & information in header and navigation bar -->
     <div class="header-bar">
         <div class="container">
             <h1 style=text-align:center;>EARTHQUAKE IN UTAH</h1>
@@ -162,7 +163,7 @@
         </div>
     </div>
 
-    <!-- Insering an image file and typing texts-->
+    <!-- Inserts an image file and typing texts-->
     <br>
     <h3 style=text-align:center>The Wasatch Fault, Utah</h1>
         <p style=text-align:center><img src="../assignment2_image/wasatch.jpg" width="600" alt="Wasatch Fault" /></p>
@@ -172,7 +173,7 @@
         <h3 style=text-align:center>The Earthquake-Vulnerability Map in Utah</h2>
             <div id='map'></div>
 
-            <!-- Creating two interactive buttons -->
+            <!-- Creates two interactive buttons -->
             <p style=text-align:center><button id="utah">VIEW <em><strong>STATE OF UTAH</strong></em></button>&nbsp;<button id="world">VIEW <em><strong>WORLD MAP</strong></em></button></p>
 
             <!-- Javascript GeoJSON source -->
@@ -223,7 +224,7 @@
                     style: 'normal'
                 });
 
-                /* Selecting the colors from values of the choropleth map */
+                /* Selects the colors from values of the choropleth map */
                 function getColor(d) {
                     return d > 483.600001 ? '#e31a1c' :
                         d > 350.600001 ? '#fc4e2a' :
@@ -259,7 +260,7 @@
                     map.fitBounds(e.target.getBounds());
                 }
 
-                /* Making popup displays for the population density map */
+                /* Makes popup displays for the population density map */
                 function onEachFeature1(feature, layer) {
                     /* County name, Population, Population Density */
                     layer.bindPopup("<strong>COUNTY </strong>" + feature.properties.County + "<br/>" + "<strong>POP </strong>" + feature.properties.Pop + "<br/>" + "<strong>POP DENSITY: </strong>" + feature.properties.Density);
@@ -269,7 +270,7 @@
                     });
                 }
 
-                /* Making popup displays for the earthquake map */
+                /* Makes popup displays for the earthquake map */
                 function onEachFeature2(feature, layer) {
                     /* Location, Time, Magnitude */
                     layer.bindPopup("<strong>PLACE </strong>" + feature.properties.place + "<br/>" + "<strong>TIME </strong>" + feature.properties.time_ + "<br/>" + "<strong>MAGNITUDE: </strong>" + feature.properties.mag);
@@ -279,7 +280,7 @@
                     });
                 }
 
-                /* Presenting geojson files in the map */
+                /* Presents geojson files in the map */
                 var den = new L.geoJson(den, /* Population density */ {
                     style: style,
                     onEachFeature: onEachFeature1
@@ -306,7 +307,7 @@
                     }).addTo(map)
                 });
 
-                /* Setting legend in the map */
+                /* Legend setting */
                 var legend1 = L.control({
                     position: 'bottomright'
                 });
@@ -333,7 +334,7 @@
 
                 legend1.addTo(map);
 
-                /* Making a layer control button in the map */
+                /* Makes a layer control button in the map */
                 var baseMaps = {
                     /* Three basemaps */
                     "Black & White View": Stamen_Toner,
@@ -349,7 +350,7 @@
 
                 L.control.layers(baseMaps, overlayMaps).addTo(map);
 
-                /* Making the legend appears.disappears when the Population Density layer turns on.off */
+                /* Makes the legend appears.disappears when the Population Density layer turns on.off */
                 map.on('overlayremove', function(eventLayer) {
                     console.log(eventLayer.name + " off");
                     if (eventLayer.name == "Population Density") {
@@ -364,10 +365,9 @@
                     }
                 });
 
-                <
-                !--Setting an event when clicking the buttons-- >
+                <!-- Setting an event when clicking the buttons -->
 
-                //add an event listener for a click event on the button
+                //Add an event listener for a click event on the button
                 document.getElementById("world").addEventListener("click", world);
 
                 //VIEW WORLD MAP button
@@ -375,7 +375,7 @@
                     map.setView(new L.LatLng(25.4830, -182.4609), 2);
                 };
 
-                //add an event listener for a click event on the button
+                //Add an event listener for a click event on the button
                 document.getElementById("utah").addEventListener("click", utah);
 
                 //VIEW STATE OF UTAH button
@@ -384,7 +384,7 @@
                 };
             </script>
             <br>
-            <!-- Inserting images and texts in the web page -->
+            <!-- Inserts images and texts in the web page -->
             <p style=text-align:center><img src="../assignment2_image/earthquake.JPG" width="500" alt="Earthquake mag 4.0" />&nbsp&nbsp&nbsp<img src="../assignment2_image/Population Density.JPG" width="500" alt="Population Density in Utah" />&nbsp&nbsp&nbsp<img src="../assignment2_image/fire_department.JPG" width="500" alt="Fire Department Facilities" /></p>
             <p style=text-align:justify>The first figure presents <b>the location of the earthquakes</b> with a magnitude of above 4.0. These earthquakes occurred between 2000 and 2015. In general, <strong><em>4.0</em></strong> is recognized as the minimum magnitude of physical damage in <strong>the Richter scale</strong>. When combining the point layer with this topography base map, you can find that those earthquakes occurred along <strong>the Wasatch Fault</strong>.</p>
             <p style=text-align:justify>The second figure shows <b>the population density</b> in Utah 29 counties. As seen on the density map, <strong>Salt Lake City</strong> has the highest population density. Although this city was not damaged by the earthquakes, given that this city is located close to <b>the Fault</b>, it seems that preparing for future earthquakes is required.</p>
@@ -392,7 +392,7 @@
             <p style=text-align:center><img src="../assignment2_image/analysis.JPG" width="1500" alt="Overlay" />
                 <br>
                 <br>
-                <!-- Texting the data sources in the web page -->
+                <!-- Texts the data sources in the web page -->
                 <h3 style=text-align:center>Data Sources</h3>
                 <p> <b>utah_earthquake4.geojson</b>
                     <br>
@@ -426,8 +426,11 @@
                     - GitHub URL: <i>https://andyjung82.github.io/CRP558/assignment2_image/wasatch.jpg</i>
                     <br>
                     - Source Data URL: <i>https://marlimillerphoto.com/images/130102-49.jpg</i> </p>
+<!-- Close Body Tag -->
 </body>
-
+<!-- Close HTML Tag -->
 </html>
 
+<!-- All geoJson files are in the assignment2_geojson folder (GitHub) Please check them -->
+<!-- All image files are in the assignment2_image folder (GitHub) Please check them -->
 <!-- Thank you -->
