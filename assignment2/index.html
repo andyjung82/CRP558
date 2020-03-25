@@ -4,418 +4,430 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Wasatch Fault</title>
-   
-  <link href="https://fonts.googleapis.com/css?family=Ropa+Sans:400,400i&display=swap" rel="stylesheet">
-  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
-  
-  <!-- Load in leaflet plugin -->
-  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wasatch Fault</title>
 
-  <!-- Load in Heat plugin -->
-  <script src="https://leaflet.github.io/Leaflet.heat/dist/leaflet-heat.js"></script>
-  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-  
+    <link href="https://fonts.googleapis.com/css?family=Ropa+Sans:400,400i&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+
+    <!-- Load in leaflet plugin -->
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+
+    <!-- Load in Heat plugin -->
+    <script src="https://leaflet.github.io/Leaflet.heat/dist/leaflet-heat.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+
     <!-- Page Design CSS -->
-  <style>
-    body {
-      padding: 0;
-      margin: 0;
-      font-family: 'Ropa Sans', sans-serif;
-      color: #607D8B;
-    }
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: 'Ropa Sans', sans-serif;
+            color: #607D8B;
+        }
 
-   /* Navigation bar container setting */
-    .container {
-      max-width: 700px;
-      margin: auto;
-    }
+        /* Navigation bar container setting */
+        .container {
+            max-width: 700px;
+            margin: auto;
+        }
 
-   /* Navigation bar item setting */
-    .nav-item {
-      width: 100%;
-      padding: 0;
-      margin: 0;
-      background: #6CA9FF;
-    }
+        /* Navigation bar item setting */
+        .nav-item {
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            background: #6CA9FF;
+        }
 
-    .nav-item .nav-list {
-      list-style-type: none;
-      display: inline-block;
-    }
+        .nav-item .nav-list {
+            list-style-type: none;
+            display: inline-block;
+        }
 
-    /* Styles for the anchor tags */
-    .nav-item .nav-list>a {
-      text-decoration: none;
-      display: inline-block;
-      color: #fff;
-      padding: 1.5pc;
-      font-size: 18px;
-      text-transform: uppercase;
-      border: 3px solid #6CA9FF;
-    }
+        /* Styles for the anchor tags */
+        .nav-item .nav-list>a {
+            text-decoration: none;
+            display: inline-block;
+            color: #fff;
+            padding: 1.5pc;
+            font-size: 18px;
+            text-transform: uppercase;
+            border: 3px solid #6CA9FF;
+        }
 
-    /* This is to style the anchor tag when is is hovered on */
-    .nav-item .nav-list>a:hover {
-      background: #fff;
-      border-radius: 5px;
-      color: #607D8B;
-    }
+        /* This is to style the anchor tag when is is hovered on */
+        .nav-item .nav-list>a:hover {
+            background: #fff;
+            border-radius: 5px;
+            color: #607D8B;
+        }
 
-    /* For the custom text space */
-    .header-bar {
-      width: 100%;
-      padding: 30px;
-      background: #e9e9e9;
-    }
+        /* For the custom text space */
+        .header-bar {
+            width: 100%;
+            padding: 30px;
+            background: #e9e9e9;
+        }
 
-    h1,
-    h2,
-    h3 {
-      margin: 0;
-    }
+        h1,
+        h2,
+        h3 {
+            margin: 0;
+        }
 
-    h1 {
-      font-size: 30px;
-      padding: 10px 0;
-    }
+        h1 {
+            font-size: 30px;
+            padding: 10px 0;
+        }
 
-    h3 {
-      padding: 7px;
-    }
-  </style>
-  
-  
-  <style>
-	html, body {
-		height: 100%;
-		margin: 0;
-		}
+        h3 {
+            padding: 7px;
+        }
+    </style>
 
-    /* Map size setting*/
-		#map {
-			width: 100%;
-			height: 700px;
-		}
-  </style>
-  
-  <style>
-    /* Legend design setting*/
-    #map
-    .legend {
-    line-height: 30px;
-    color: #555;
-}
-    .legend i {
-    width: 20px;
-    height: 20px;
-    float: left;
-    margin-right: 8px;
-    opacity: 0.9;
-}
-    .info {
-    padding: 10px 10px;
-    font: 10px/20px Arial, Helvetica, sans-serif;
-    background: rgba(255,255,255,0.8);
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    border-radius: 5px;
-	  width: 120px;
-}
-  .info h4 {
-    margin: 0  5px;
-    color: #777;
-  </style>
+
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        /* Map size setting*/
+        #map {
+            width: 100%;
+            height: 700px;
+        }
+    </style>
+
+    <style>
+        /* Legend design setting*/
+        #map .legend {
+            line-height: 30px;
+            color: #555;
+        }
+
+        .legend i {
+            width: 20px;
+            height: 20px;
+            float: left;
+            margin-right: 8px;
+            opacity: 0.9;
+        }
+
+        .info {
+            padding: 10px 10px;
+            font: 10px/20px Arial, Helvetica, sans-serif;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            width: 120px;
+        }
+
+        .info h4 {
+            margin: 0 5px;
+            color: #777;
+    </style>
 </head>
 
 
 <body>
- <!-- Typing title & information in header and navigation bar -->
-  <div class="header-bar">
-    <div class="container">
-      <h1 style=text-align:center;>EARTHQUAKE IN UTAH</h1>
-      <h2 style=text-align:center><i>Meen Wook Jung</i></h3>
+    <!-- Typing title & information in header and navigation bar -->
+    <div class="header-bar">
+        <div class="container">
+            <h1 style=text-align:center;>EARTHQUAKE IN UTAH</h1>
+            <h2 style=text-align:center><i>Meen Wook Jung</i></h3>
+        </div>
     </div>
-  </div>
-  <div class="navbar">
-    <div class="nav-item"><ul class="container">
-      <li class="nav-list">
-        <a href="https://andyjung82.github.io/CRP558/#home">CRP 558</a></li>
-      <li class="nav-list">
-        <a href="https://www.utah.gov/index.html">Utah.gov</a></li>
-      <li class="nav-list">
-        <a href="https://en.wikipedia.org/wiki/United_States_Geological_Survey">USGS</a></li>
-      <li class="nav-list">
-        <a href="https://en.wikipedia.org/wiki/Richter_magnitude_scale">Richter Scale</a></li>
-      <li class="nav-list">
-        <a href="https://earth.google.com/web/?authuser=0">Google Earth</a></li>
+    <div class="navbar">
+        <div class="nav-item">
+            <ul class="container">
+                <li class="nav-list">
+                    <a href="https://andyjung82.github.io/CRP558/#home">CRP 558</a></li>
+                <li class="nav-list">
+                    <a href="https://www.utah.gov/index.html">Utah.gov</a></li>
+                <li class="nav-list">
+                    <a href="https://en.wikipedia.org/wiki/United_States_Geological_Survey">USGS</a></li>
+                <li class="nav-list">
+                    <a href="https://en.wikipedia.org/wiki/Richter_magnitude_scale">Richter Scale</a></li>
+                <li class="nav-list">
+                    <a href="https://earth.google.com/web/?authuser=0">Google Earth</a></li>
+        </div>
     </div>
-  </div>
- 
- <!-- Insering an image file and typing texts-->
-  <br>
-  <h3 style=text-align:center>The Wasatch Fault, Utah</h1>
-  <p style=text-align:center><img src="../assignment2_image/wasatch.jpg" width="600" alt="Wasatch Fault" /></p>
-    
-  <p style=text-align:justify><b>The Wasatch Fault</b> is located on the western edge of the Wasatch Mountains in the states of <i>Utah</i> and <i>Idaho</i>. The Fault is <b>390 kilometers</b> long, stretching from southern <i>Idaho</i> to central <i>Utah</i>. The five segments of the Fault are considered active. The segments are called <strong>the Nephi Fault segment</strong>, <strong>the Provo Fault segment</strong>, <strong>the Salt Lake City Fault segment</strong>, <strong>the Weber Fault segment</strong>, and <strong>the Brigham City Fault segment</strong>. On average the active segments are <b>40 kilometers</b> long, each of which can produce powerful earthquakes whose magnitude is <b>above 6.0</b>. </p>
-  <br>
-  <h3 style=text-align:center>The Earthquake-Vulnerability Map in Utah</h2>
-  <div id='map'></div>
- 
- <!-- Creating two interactive buttons -->
-  <p style=text-align:center><button id="utah">VIEW <em><strong>STATE OF UTAH</strong></em></button>&nbsp;<button id="world">VIEW <em><strong>WORLD MAP</strong></em></button></p>
-  
- <!-- Javascript GeoJSON source -->
-  <script type="text/javascript"
-src="https://andyjung82.github.io/CRP558/assignment2_geojson/pop_den.geojson"></script>
-<script type="text/javascript" src="https://andyjung82.github.io/CRP558/assignment2_geojson/utah_earthquake4.geojson"></script>
-  
- <!-- Interactive Map for Javascript -->
-  <script type="text/javascript"> 
-	var map = L.map('map').setView([39.5040, -111.5332], 7);
-   
-/* Original map */
-L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-	maxZoom: 18,
-	attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-		'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-		'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-	id: 'mapbox/light-v9',
-	tileSize: 512,
-	zoomOffset: -1
-}).addTo(map);
 
-/* Basemap 1 */  
-var Stamen_Toner = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.{ext}', {
-      attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      subdomains: 'abcd',
-      minZoom: 0,
-      maxZoom: 20,
-      ext: 'png'
-    });  
+    <!-- Insering an image file and typing texts-->
+    <br>
+    <h3 style=text-align:center>The Wasatch Fault, Utah</h1>
+        <p style=text-align:center><img src="../assignment2_image/wasatch.jpg" width="600" alt="Wasatch Fault" /></p>
 
-/* Basemap 2 */
-var OpenTopoMap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
-      maxZoom: 18,
-      attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
-    });  
+        <p style=text-align:justify><b>The Wasatch Fault</b> is located on the western edge of the Wasatch Mountains in the states of <i>Utah</i> and <i>Idaho</i>. The Fault is <b>390 kilometers</b> long, stretching from southern <i>Idaho</i> to central <i>Utah</i>. The five segments of the Fault are considered active. The segments are called <strong>the Nephi Fault segment</strong>, <strong>the Provo Fault segment</strong>, <strong>the Salt Lake City Fault segment</strong>, <strong>the Weber Fault segment</strong>, and <strong>the Brigham City Fault segment</strong>. On average the active segments are <b>40 kilometers</b> long, each of which can produce powerful earthquakes whose magnitude is <b>above 6.0</b>. </p>
+        <br>
+        <h3 style=text-align:center>The Earthquake-Vulnerability Map in Utah</h2>
+            <div id='map'></div>
 
-/* Basemap 3 */
-var GeoportailFrance_orthos = L.tileLayer('https://wxs.ign.fr/{apikey}/geoportail/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE={style}&TILEMATRIXSET=PM&FORMAT={format}&LAYER=ORTHOIMAGERY.ORTHOPHOTOS&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}', {
-      attribution: '<a target="_blank" href="https://www.geoportail.gouv.fr/">Geoportail France</a>',
-      bounds: [[-75, -180], [81, 180]],
-      minZoom: 2,
-      maxZoom: 18,
-      apikey: 'choisirgeoportail',
-      format: 'image/jpeg',
-      style: 'normal'
-    });  
+            <!-- Creating two interactive buttons -->
+            <p style=text-align:center><button id="utah">VIEW <em><strong>STATE OF UTAH</strong></em></button>&nbsp;<button id="world">VIEW <em><strong>WORLD MAP</strong></em></button></p>
 
-/* Selecting the colors from values of the choropleth map */
-	function getColor(d) {
-		return 	    d > 483.600001   ? '#e31a1c' :
-                d > 350.600001   ? '#fc4e2a' :
-                d > 96.000001    ? '#fd8d3c' :
-                d > 19.500001    ? '#feb24c' :
-                d > 8.000001     ? '#fed976' :
-                                   '#ffffcc';
-	}
+            <!-- Javascript GeoJSON source -->
+            <script type="text/javascript" src="https://andyjung82.github.io/CRP558/assignment2_geojson/pop_den.geojson"></script>
+            <script type="text/javascript" src="https://andyjung82.github.io/CRP558/assignment2_geojson/utah_earthquake4.geojson"></script>
 
-	function style(feature) {
-		return {
-			weight: 1,
-			opacity: 1,
-			color: 'black',
-			dashArray: '2',
-			fillOpacity: 0.7,	
-			fillColor: getColor(feature.properties.Density) /* Selecting Density field of pop_den.geojson */
-		};
-	}  
-  
-	function highlightFeature(e) {
-		var layer = e.target;
-	}
+            <!-- Interactive Map for Javascript -->
+            <script type="text/javascript">
+                var map = L.map('map').setView([39.5040, -111.5332], 7);
 
-	var geojson;
+                /* Original map */
+                L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+                    maxZoom: 18,
+                    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+                        '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                    id: 'mapbox/light-v9',
+                    tileSize: 512,
+                    zoomOffset: -1
+                }).addTo(map);
 
-	function resetHighlight(e) {
-		geojson.resetStyle(e.target);
-		info.update();
-	}
+                /* Basemap 1 */
+                var Stamen_Toner = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.{ext}', {
+                    attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                    subdomains: 'abcd',
+                    minZoom: 0,
+                    maxZoom: 20,
+                    ext: 'png'
+                });
 
-	function zoomToFeature(e) {
-		map.fitBounds(e.target.getBounds());
-	}
+                /* Basemap 2 */
+                var OpenTopoMap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 18,
+                    attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+                });
 
-/* Making popup displays for the population density map */
-	function onEachFeature1(feature, layer) {
-	     /* County name, Population, Population Density */
-		 layer.bindPopup("<strong>COUNTY </strong>" + feature.properties.County +"<br/>"+"<strong>POP </strong>" + feature.properties.Pop+"<br/>"+"<strong>POP DENSITY: </strong>" + feature.properties.Density);
-        layer.on({
-			mouseover: highlightFeature,
-			mouseout: resetHighlight,
-		});
-	}
+                /* Basemap 3 */
+                var GeoportailFrance_orthos = L.tileLayer('https://wxs.ign.fr/{apikey}/geoportail/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE={style}&TILEMATRIXSET=PM&FORMAT={format}&LAYER=ORTHOIMAGERY.ORTHOPHOTOS&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}', {
+                    attribution: '<a target="_blank" href="https://www.geoportail.gouv.fr/">Geoportail France</a>',
+                    bounds: [
+                        [-75, -180],
+                        [81, 180]
+                    ],
+                    minZoom: 2,
+                    maxZoom: 18,
+                    apikey: 'choisirgeoportail',
+                    format: 'image/jpeg',
+                    style: 'normal'
+                });
 
-/* Making popup displays for the earthquake map */
-  function onEachFeature2(feature, layer) {
-	     /* Location, Time, Magnitude */
-		 layer.bindPopup("<strong>PLACE </strong>" + feature.properties.place +"<br/>"+"<strong>TIME </strong>" + feature.properties.time_+"<br/>"+"<strong>MAGNITUDE: </strong>" + feature.properties.mag);
-        layer.on({
-			mouseover: highlightFeature,
-			mouseout: resetHighlight,
-		});
-	}
+                /* Selecting the colors from values of the choropleth map */
+                function getColor(d) {
+                    return d > 483.600001 ? '#e31a1c' :
+                        d > 350.600001 ? '#fc4e2a' :
+                        d > 96.000001 ? '#fd8d3c' :
+                        d > 19.500001 ? '#feb24c' :
+                        d > 8.000001 ? '#fed976' :
+                        '#ffffcc';
+                }
 
-/* Presenting geojson files in the map */
-      var den = new L.geoJson(den, /* Population density */{
-            style: style,
-        onEachFeature: onEachFeature1
-      }).addTo(map);
-  
-      var eq = new L.geoJson(eq, /* Earthquakes */{
-        onEachFeature: onEachFeature2
-      }).addTo(map);
+                function style(feature) {
+                    return {
+                        weight: 1,
+                        opacity: 1,
+                        color: 'black',
+                        dashArray: '2',
+                        fillOpacity: 0.7,
+                        fillColor: getColor(feature.properties.Density) /* Selecting Density field of pop_den.geojson */
+                    };
+                }
 
-/* Heat map code */
-      $.getJSON("https://andyjung82.github.io/CRP558/assignment2_geojson/Utah_fire.geojson", function(data) {
-        var coords = data.features.map(feat => feat.geometry.coordinates.slice().reverse())
-        var heat = L.heatLayer(coords, {
-            minOpacity: 0.3, //the minimum opacity the heat will start at
-            maxZoom: 19, //zoom level where the points reach maximum intensity (as intensity scales with zoom), equals maxZoom of the map by default
-            max: 1.0, //maximum point intensity, 1.0 by default
-            radius: 25, //radius of each "point" of the heatmap, 25 by default
-            blur: 15, //amount of blur, 15 by default
-            gradient: {
-              0.2: 'green',
-              0.65: 'yellow',
-              1: 'red'
-            }
-        }).addTo(map)
-    });
+                function highlightFeature(e) {
+                    var layer = e.target;
+                }
 
-/* Setting legend in the map */
-  var legend1 = L.control({position: 'bottomright'});
+                var geojson;
 
-      legend1.onAdd = function (map) {
+                function resetHighlight(e) {
+                    geojson.resetStyle(e.target);
+                    info.update();
+                }
 
-        var div = L.DomUtil.create('div', 'info legend'),
-          grades = ["1.0", "8.0", "19.5", "96.0", "350.6", "483.6"],
-          labels = ["<b>Population Density 2015</b>"],
-          from, to;
+                function zoomToFeature(e) {
+                    map.fitBounds(e.target.getBounds());
+                }
 
-        for (var i = 0; i < grades.length; i++) {
-          from = grades[i];
-          to = grades[i + 1];
+                /* Making popup displays for the population density map */
+                function onEachFeature1(feature, layer) {
+                    /* County name, Population, Population Density */
+                    layer.bindPopup("<strong>COUNTY </strong>" + feature.properties.County + "<br/>" + "<strong>POP </strong>" + feature.properties.Pop + "<br/>" + "<strong>POP DENSITY: </strong>" + feature.properties.Density);
+                    layer.on({
+                        mouseover: highlightFeature,
+                        mouseout: resetHighlight,
+                    });
+                }
 
-          labels.push(
-            '<i style="background:' + getColor(from + 1) + '"></i> ' +
-            from + (to ? '&ndash;' + to : '-1274.7'));
-        }
+                /* Making popup displays for the earthquake map */
+                function onEachFeature2(feature, layer) {
+                    /* Location, Time, Magnitude */
+                    layer.bindPopup("<strong>PLACE </strong>" + feature.properties.place + "<br/>" + "<strong>TIME </strong>" + feature.properties.time_ + "<br/>" + "<strong>MAGNITUDE: </strong>" + feature.properties.mag);
+                    layer.on({
+                        mouseover: highlightFeature,
+                        mouseout: resetHighlight,
+                    });
+                }
 
-        div.innerHTML = labels.join('<br>');
-        return div;
-      };
+                /* Presenting geojson files in the map */
+                var den = new L.geoJson(den, /* Population density */ {
+                    style: style,
+                    onEachFeature: onEachFeature1
+                }).addTo(map);
 
-      legend1.addTo(map);
+                var eq = new L.geoJson(eq, /* Earthquakes */ {
+                    onEachFeature: onEachFeature2
+                }).addTo(map);
 
-/* Making a layer control button in the map */
-  var baseMaps = { /* Three basemaps */
-    "Black & White View": Stamen_Toner,
-    "Terrain View": OpenTopoMap,
-    "Satellite View": GeoportailFrance_orthos
-  };
+                /* Heat map code */
+                $.getJSON("https://andyjung82.github.io/CRP558/assignment2_geojson/Utah_fire.geojson", function(data) {
+                    var coords = data.features.map(feat => feat.geometry.coordinates.slice().reverse())
+                    var heat = L.heatLayer(coords, {
+                        minOpacity: 0.3, //the minimum opacity the heat will start at
+                        maxZoom: 19, //zoom level where the points reach maximum intensity (as intensity scales with zoom), equals maxZoom of the map by default
+                        max: 1.0, //maximum point intensity, 1.0 by default
+                        radius: 25, //radius of each "point" of the heatmap, 25 by default
+                        blur: 15, //amount of blur, 15 by default
+                        gradient: {
+                            0.2: 'green',
+                            0.65: 'yellow',
+                            1: 'red'
+                        }
+                    }).addTo(map)
+                });
 
-  var overlayMaps = { /* Two vector overlay maps */
-    "Earthquakes": eq,
-    "Population Density": den,
-  };
+                /* Setting legend in the map */
+                var legend1 = L.control({
+                    position: 'bottomright'
+                });
 
-  L.control.layers(baseMaps, overlayMaps).addTo(map);
+                legend1.onAdd = function(map) {
 
-/* Making the legend appears.disappears when the Population Density layer turns on.off */
-  map.on('overlayremove', function (eventLayer) {
-	console.log(eventLayer.name  + " off");
-	if (eventLayer.name == "Population Density") {
-		this.removeControl(legend1);
-	}
-});
-  
-  map.on('overlayadd', function (eventLayer) {
-    console.log(eventLayer.name + " on");
-    if (eventLayer.name == "Population Density") {
-       legend1.addTo(this);
-    }
-  });      
-  
-<!-- Setting an event when clicking the buttons -->
-  
-        //add an event listener for a click event on the button
-        document.getElementById("world").addEventListener("click", world);
+                    var div = L.DomUtil.create('div', 'info legend'),
+                        grades = ["1.0", "8.0", "19.5", "96.0", "350.6", "483.6"],
+                        labels = ["<b>Population Density 2015</b>"],
+                        from, to;
 
-        //VIEW WORLD MAP button
-        function world() {
-            map.setView(new L.LatLng(25.4830, -182.4609), 2);
-        };    
+                    for (var i = 0; i < grades.length; i++) {
+                        from = grades[i];
+                        to = grades[i + 1];
 
-        //add an event listener for a click event on the button
-        document.getElementById("utah").addEventListener("click", utah);
+                        labels.push(
+                            '<i style="background:' + getColor(from + 1) + '"></i> ' +
+                            from + (to ? '&ndash;' + to : '-1274.7'));
+                    }
 
-        //VIEW STATE OF UTAH button
-        function utah() {
-            map.setView(new L.LatLng(39.5040, -111.5332), 7);
-        };    
-  
-</script>
-  <br>
-   <!-- Inserting images and texts in the web page -->
-    <p style=text-align:center><img src="../assignment2_image/earthquake.JPG" width="500" alt="Earthquake mag 4.0" />&nbsp&nbsp&nbsp<img src="../assignment2_image/Population Density.JPG" width="500" alt="Population Density in Utah" />&nbsp&nbsp&nbsp<img src="../assignment2_image/fire_department.JPG" width="500" alt="Fire Department Facilities" /></p>
-    <p style=text-align:justify>The first figure presents <b>the location of the earthquakes</b> with a magnitude of above 4.0. These earthquakes occurred between 2000 and 2015. In general, <strong><em>4.0</em></strong> is recognized as the minimum magnitude of physical damage in <strong>the Richter scale</strong>. When combining the point layer with this topography base map, you can find that those earthquakes occurred along <strong>the Wasatch Fault</strong>.</p>
-    <p style=text-align:justify>The second figure shows <b>the population density</b> in Utah 29 counties. As seen on the density map, <strong>Salt Lake City</strong> has the highest population density. Although this city was not damaged by the earthquakes, given that this city is located close to <b>the Fault</b>, it seems that preparing for future earthquakes is required.</p>
-    <p style=text-align:justify>The third figure expressed <b>the density of the fire departments</b> in the state of Utah as a heatmap. When combining these three layers, we can prepare for future earthquakes in specific areas <strong>where the population density is high and fire departments are insufficient as well as an earthquake is expected to occur. </strong></p>
-    <p style=text-align:center><img src="../assignment2_image/analysis.JPG" width="1500" alt="Overlay" />
-  <br>
-  <br>
-   <!-- Texting the data sources in the web page -->
-    <h3 style=text-align:center>Data Sources</h3>
-    <p> <b>utah_earthquake4.geojson</b>
-	  <br>
-	- Data Explanation: Earthquakes Information in Utah
-	  <br>
-	- GitHub URL: <i>https://andyjung82.github.io/CRP558/assignment2_geojson/utah_earthquake4.geojson</i>
-	  <br>
-	- Source Data URL: <i>https://earthquake.usgs.gov/earthquakes/search/</i>
-	  <br>
-	  <br>
-	<b>pop_den.geojson</b>
-	  <br>
-	- Data Explanation: Population Density Information in 29 counties, Utah
-	  <br>
-	- GitHub URL: <i>https://andyjung82.github.io/CRP558/assignment2_geojson/pop_den.geojson</i>
-	  <br>
-	- Source Data URL: <i>https://opendata.utah.gov/Government-and-Taxes/Population-Density-By-Land-Area-And-County-In-Utah/bzur-buif</i>
-	  <br>
-	  <br>
-	<b>Utah_fire.geojson</b>
-	  <br>
-	- Data Explanation: Fire Department Location in Utah
-	  <br>
-	- GitHub URL: <i>https://andyjung82.github.io/CRP558/assignment2_geojson/Utah_fire.geojson</i>
-	  <br>
-	- Source Data URL: <i>https://opendata.utah.gov/dataset/Utah-Emergency-Medical-Service-Facilities/un92-aygk</i>
-	  <br>
-	  <br>
-	<b>Wasatch.jpg</b>
-	  <br>
-	- GitHub URL: <i>https://andyjung82.github.io/CRP558/assignment2_image/wasatch.jpg</i>
-	  <br>
-	- Source Data URL: <i>https://marlimillerphoto.com/images/130102-49.jpg</i> </p>
+                    div.innerHTML = labels.join('<br>');
+                    return div;
+                };
+
+                legend1.addTo(map);
+
+                /* Making a layer control button in the map */
+                var baseMaps = {
+                    /* Three basemaps */
+                    "Black & White View": Stamen_Toner,
+                    "Terrain View": OpenTopoMap,
+                    "Satellite View": GeoportailFrance_orthos
+                };
+
+                var overlayMaps = {
+                    /* Two vector overlay maps */
+                    "Earthquakes": eq,
+                    "Population Density": den,
+                };
+
+                L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+                /* Making the legend appears.disappears when the Population Density layer turns on.off */
+                map.on('overlayremove', function(eventLayer) {
+                    console.log(eventLayer.name + " off");
+                    if (eventLayer.name == "Population Density") {
+                        this.removeControl(legend1);
+                    }
+                });
+
+                map.on('overlayadd', function(eventLayer) {
+                    console.log(eventLayer.name + " on");
+                    if (eventLayer.name == "Population Density") {
+                        legend1.addTo(this);
+                    }
+                });
+
+                <
+                !--Setting an event when clicking the buttons-- >
+
+                //add an event listener for a click event on the button
+                document.getElementById("world").addEventListener("click", world);
+
+                //VIEW WORLD MAP button
+                function world() {
+                    map.setView(new L.LatLng(25.4830, -182.4609), 2);
+                };
+
+                //add an event listener for a click event on the button
+                document.getElementById("utah").addEventListener("click", utah);
+
+                //VIEW STATE OF UTAH button
+                function utah() {
+                    map.setView(new L.LatLng(39.5040, -111.5332), 7);
+                };
+            </script>
+            <br>
+            <!-- Inserting images and texts in the web page -->
+            <p style=text-align:center><img src="../assignment2_image/earthquake.JPG" width="500" alt="Earthquake mag 4.0" />&nbsp&nbsp&nbsp<img src="../assignment2_image/Population Density.JPG" width="500" alt="Population Density in Utah" />&nbsp&nbsp&nbsp<img src="../assignment2_image/fire_department.JPG" width="500" alt="Fire Department Facilities" /></p>
+            <p style=text-align:justify>The first figure presents <b>the location of the earthquakes</b> with a magnitude of above 4.0. These earthquakes occurred between 2000 and 2015. In general, <strong><em>4.0</em></strong> is recognized as the minimum magnitude of physical damage in <strong>the Richter scale</strong>. When combining the point layer with this topography base map, you can find that those earthquakes occurred along <strong>the Wasatch Fault</strong>.</p>
+            <p style=text-align:justify>The second figure shows <b>the population density</b> in Utah 29 counties. As seen on the density map, <strong>Salt Lake City</strong> has the highest population density. Although this city was not damaged by the earthquakes, given that this city is located close to <b>the Fault</b>, it seems that preparing for future earthquakes is required.</p>
+            <p style=text-align:justify>The third figure expressed <b>the density of the fire departments</b> in the state of Utah as a heatmap. When combining these three layers, we can prepare for future earthquakes in specific areas <strong>where the population density is high and fire departments are insufficient as well as an earthquake is expected to occur. </strong></p>
+            <p style=text-align:center><img src="../assignment2_image/analysis.JPG" width="1500" alt="Overlay" />
+                <br>
+                <br>
+                <!-- Texting the data sources in the web page -->
+                <h3 style=text-align:center>Data Sources</h3>
+                <p> <b>utah_earthquake4.geojson</b>
+                    <br>
+                    - Data Explanation: Earthquakes Information in Utah
+                    <br>
+                    - GitHub URL: <i>https://andyjung82.github.io/CRP558/assignment2_geojson/utah_earthquake4.geojson</i>
+                    <br>
+                    - Source Data URL: <i>https://earthquake.usgs.gov/earthquakes/search/</i>
+                    <br>
+                    <br>
+                    <b>pop_den.geojson</b>
+                    <br>
+                    - Data Explanation: Population Density Information in 29 counties, Utah
+                    <br>
+                    - GitHub URL: <i>https://andyjung82.github.io/CRP558/assignment2_geojson/pop_den.geojson</i>
+                    <br>
+                    - Source Data URL: <i>https://opendata.utah.gov/Government-and-Taxes/Population-Density-By-Land-Area-And-County-In-Utah/bzur-buif</i>
+                    <br>
+                    <br>
+                    <b>Utah_fire.geojson</b>
+                    <br>
+                    - Data Explanation: Fire Department Location in Utah
+                    <br>
+                    - GitHub URL: <i>https://andyjung82.github.io/CRP558/assignment2_geojson/Utah_fire.geojson</i>
+                    <br>
+                    - Source Data URL: <i>https://opendata.utah.gov/dataset/Utah-Emergency-Medical-Service-Facilities/un92-aygk</i>
+                    <br>
+                    <br>
+                    <b>Wasatch.jpg</b>
+                    <br>
+                    - GitHub URL: <i>https://andyjung82.github.io/CRP558/assignment2_image/wasatch.jpg</i>
+                    <br>
+                    - Source Data URL: <i>https://marlimillerphoto.com/images/130102-49.jpg</i> </p>
 </body>
+
 </html>
 
- <!-- Thank you -->
+<!-- Thank you -->
