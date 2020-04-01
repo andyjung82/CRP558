@@ -121,7 +121,7 @@ body {
 <div id='map'></div>
 
 <script type="text/javascript" src="https://andyjung82.github.io/CRP558/exercise9_geojson/park.geojson"></script> 
-<script type="text/javascript" src="https://andyjung82.github.io/CRP558/exercise9_geojson/sea3.geojson"></script>
+<script type="text/javascript" src="https://andyjung82.github.io/CRP558/exercise9_geojson/den.geojson"></script>
 
   
 <script type="text/javascript">
@@ -198,7 +198,7 @@ body {
 		});
 	}
 
-	var sea = new L.geoJson(sea, {
+	var den = new L.geoJson(den, {
 		style: style,
 		onEachFeature: onEachFeature
 	}).addTo(map);
@@ -218,7 +218,7 @@ body {
   
   var overlayMaps = {
 			"Parks and recreation": park,
-            "Population Density": sea,
+            "Population Density": den,
 		};
 	
 		L.control.layers(baseMaps, overlayMaps).addTo(map);
