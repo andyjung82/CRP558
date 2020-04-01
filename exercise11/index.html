@@ -53,7 +53,7 @@
                attribution: "Iowa State University GIS Facility &copy; 2020"
            }).addTo(map);
 
-        var runLayer = omnivore.kml('City_Location.kml.kml')
+        var runLayer = omnivore.kml('City_Location.kml')
             .on('ready', function() {
                 map.fitBounds(runLayer.getBounds());
             })
