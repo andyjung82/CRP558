@@ -120,9 +120,7 @@
   
 </div>
 
-/*
-leaflet-omnivore plugin for loading KML format
-*/
+<!--leaflet-omnivore plugin for loading KML format-->
 <script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.3.1/leaflet-omnivore.min.js'></script>
 
   <div id='map'></div>
@@ -155,6 +153,7 @@ leaflet-omnivore plugin for loading KML format
                attribution: "Iowa State University GIS Facility &copy; 2020, USDA National Agriculture Imagery Program 2019"
            }).addTo(map);
         
+	// Assigning "City_Location.kml" as "runLayer" variable and adding to a map
         var runLayer = omnivore.kml('City_Location.kml')
             .on('ready', function() {
                 map.fitBounds(runLayer.getBounds());
