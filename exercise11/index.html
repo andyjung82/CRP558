@@ -144,11 +144,30 @@
                attribution: "Iowa State University GIS Facility &copy; 2020"
            }).addTo(map);
 
+        var naip_2019_nc = L.tileLayer.wms("https://athene.gis.iastate.edu/arcgis/services/ortho/naip_2019_nc/ImageServer/WMSServer", {
+               layers: "naip_2019_nc",
+               format: "image/png",
+               transparent: true,
+               attribution: "Iowa State University GIS Facility &copy; 2020, USDA National Agriculture Imagery Program 2019"
+           }).addTo(map);
+        
         var runLayer = omnivore.kml('City_Location.kml')
             .on('ready', function() {
                 map.fitBounds(runLayer.getBounds());
             })
             .addTo(map);
+        
+            var baseMaps = {
+                            "OSM Basemap": map,
+                            "LiDAR Hillshade": lidar_hs,
+                            "2019 Orthophotos": naip_2019_nc,
+	                         };
+  
+            var overlayMaps = {
+                               "Urban Location": runLayer,
+                              };
+
+            L.control.layers(baseMaps, overlayMaps).addTo(map);
 
     </script>
 
