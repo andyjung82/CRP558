@@ -51,18 +51,29 @@
                attribution: "Iowa State University GIS Facility &copy; 2020"
            }).addTo(map);
 
-fetch('City_Location.kml')
-               .then(res => res.text())
-               .then(kmltext => {
-               // Create new kml overlay
-               const parser = new DOMParser();
-               const kml = parser.parseFromString(kmltext, 'text/xml');
-               const track = new L.KML(kml);
-               map.addLayer(track);
-               // Adjust map to show the kml
-               const bounds = track.getBounds();
-               map.fitBounds(bounds);
-           });
+      <div style="width: 100vw; height: 100vh" id="map"></div>
+
+      <script type="text/javascript">
+            // Make basemap
+            const map = new L.Map('map', { center: new L.LatLng(42.0003, -93.5596), zoom: 7 });
+            const osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+
+            map.addLayer(osm);
+
+            // Load kml file
+            fetch('City_Location.kml')
+                .then(res => res.text())
+                .then(kmltext => {
+                    // Create new kml overlay
+                    const parser = new DOMParser();
+                    const kml = parser.parseFromString(kmltext, 'text/xml');
+                    const track = new L.KML(kml);
+                    map.addLayer(track);
+
+                    // Adjust map to show the kml
+                    const bounds = track.getBounds();
+                    map.fitBounds(bounds);
+                });
 
     </script>
 
