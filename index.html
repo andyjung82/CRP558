@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
+    <meta name="description" content="CRP 558 Leaflet starter file - 2020">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Exercise 12</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin=""></script>
+
+    <style>
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -67,11 +77,21 @@ body {
 .dropdown:hover .dropdown-content {
   display: block;
 }
-</style>
-</head>
-<body>
+    </style>
+  
+    <style>
+        #map {
+            width: 700px;
+            height: 500px;
+        }
+        
+    </style>
 
-<div class="navbar">
+</head>
+
+<body>
+  
+  <div class="navbar">
   <a href="https://andyjung82.github.io/CRP558/#home">Home</a>
   <div class="dropdown">
     <button class="dropbtn">CRP 558
@@ -95,9 +115,32 @@ body {
       </div>
   </div> 
 </div>
+  <p>In the Mapbox Studio, I selected the <i><strong>Monochrome</strong> with <strong>Bubblegum</strong> style</i>. I changed several elements in the styles as follows:<br><br>
+  - <b>Base colors</b>: Color (#f1edfc)<br>
+  - <b>state-label</b>: Color (#2c62ed), Font (Courgette Regular)<br>
+  - <b>settlement-major-label</b>: Color (#db5014)<br>
+  - <b>settlement-minor-label</b>: Color (#000000), Font (Orbitron Black)<br>
+  - <b>road-motorway-trunk</b>: Color (#a30000), Dash array (2 dash - 1 gap), Offset (2 px)<br>
+  - <b>road-primary</b>: Color (#000000), Blur (1 px), Gap Width (2 px)<br>
+  - <b>road-secondary-tertiary</b>: Color (#1c1cb0)<br><br>
+ The green circles mean <strong>Hospital Community Facilities</strong> around Atlanta, Georgia. The data were obtained from <a href="http://data-georgiagio.opendata.arcgis.com/"><strong><em>Georgia Open Data</em></strong></a>.</p>
+    <div id='map'></div>
 
-<h3>CRP 558 Homepage</h3>
-<p>Exercise and Assignment</p>
+    <script>
+        var map = L.map('map').setView([33.7552, -84.3894], 10);
+
+       L.tileLayer('https://api.mapbox.com/styles/v1/andyjung82/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'ck8szzn7101ml1ipjhm8xc045',
+    // This is a unique access token, you must register for your own from https://account.mapbox.com/access-tokens/
+    accessToken: 'pk.eyJ1IjoiYW5keWp1bmc4MiIsImEiOiJjazZzaTNoMW0waDBjM2VzNWEzamRhZjBmIn0.Kad1B1eQgTP5ASm6JM7-WA' 
+}).addTo(map);
+
+        L.marker([33.7758, -84.3991]).addTo(map)
+            .bindPopup("Georgia Institute Technology")
+            .openPopup();
+    </script>
 
 </body>
 </html>
