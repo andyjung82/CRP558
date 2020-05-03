@@ -9,6 +9,8 @@
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+  
+    <script src="https://d3js.org/d3.v4.js"></script>
 
     <style>
         body {
@@ -19,12 +21,12 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 850px;
             margin: auto;
         }
 
         .nav-item {
-            width: 100%;
+            width: 95.6%;
             height: 50px;
             padding: 0;
             margin: 0;
@@ -57,7 +59,9 @@
             padding: 30px;
             background: #ffffff;
         }
-
+            .long-container {
+              padding: 5px;
+            }
 
             .background-container {
               padding: 5px;
@@ -66,8 +70,24 @@
             .background-child {
               width: 47%;
               float: left;
-              margin-right: 10px;
-              margin-left: 10px;
+              margin-right: 20px;
+              margin-top: 20px;
+              border: 3px solid #607D8B;
+            }
+
+            .background2-child {
+              width: 47%;
+              float: right;
+              margin-right: 68px;
+              border: 3px solid #607D8B;
+              margin-top: 20px;
+            }
+
+            .background3-child {
+                    width: 100%;
+                    fill: #fff
+                    border: 1px solid #607D8B;
+                    margin-top: 20px;
             }
 
 
@@ -90,13 +110,18 @@
     <style>
         html,
         body {
-            height: 100%;
+            height: 90%;
             margin: 0;
         }
 
-        #map {
-            width: 65%;
-            height: 650px;
+        #map1 {
+            width: 100%;
+            height: 550px;
+        }
+
+        #map2 {
+            width: 100%;
+            height: 550px;
         }
     </style>
 
@@ -131,7 +156,7 @@
 
       <div class="header-bar">
         <div class="container">
-            <h1 style=text-align:center;>Air Pollution and Respiratory Diseases Issue in South Korea</h1>
+            <h1 style=text-align:center;>Air Pollution and Respiratory Disease Issue in South Korea</h1>
             <br>
             <h3 style=text-align:center><i>Meen Wook Jung*</i></h3>
             <p style=text-align:center><i>Community and Regional Planning, College of Design, Iowa State University</i></p>
@@ -147,24 +172,236 @@
       <div class="background-container">
           <div class="background-child">
             <h3 style="text-align: center;">Background</h3>
-            <p style="text-align: justify;">&nbsp&nbsp Air pollution has been recently recognized as a severe urban issue in South Korea. Since the Korean government started official observation of  Particulate Matter (PM) in 2005, the level of air quality was marked as the worst ever in March 2019. In addition, Greenpeace not only indicated that the Korean annual-average fine dust concentrations were the highest level among OECD member countries in 2019 but also highlighted that the level has been continuously increasing. However, this is not just a matter of fine dust. Given the increase in the Urban Heat Island intensity, it is expected that the increased pollutants have been being combined with the air stagnation phenomenon, resulting in a serious public health issue. According to a medical report, micro particle-sized fine dust can be associated with stroke and respiratory disease by accumulating in the brain and lungs. Despite those health concerns, there is not enough data on how the micro-sized particles had affected respiratory disease-related death in South Korea. Therefore, this project aims to visualize the fine dust and mortality data in South Korea and to analyze the correlation.</p>
+            <p style="text-align: justify;">&nbsp&nbsp Air pollution has been recently recognized as a severe urban issue in South Korea. Since the Korean government started official observation of  Particulate Matter in 2005, the level of air quality was marked as the worst ever in March 2019. In addition, Greenpeace not only indicated that the Korean annual-average fine dust concentrations were the highest level among OECD member countries in 2019 but also highlighted that the level has been continuously increasing. Given the increase in the Urban Heat Island intensity, it is expected that the increased pollutants have been being combined with the air stagnation phenomenon, resulting in a serious public health issue. According to a medical report, micro particle-sized fine dust can be associated with stroke and respiratory disease by accumulating in the brain and lungs. Despite those health concerns, there is not enough data on how the micro-sized particles had affected respiratory disease-related death in South Korea. Therefore, this project aims to visualize the fine dust and mortality data in South Korea and to analyze its correlation.</p>
+            <img src="https://andyjung82.github.io/CRP558/final_project_img/pm3.JPG" width=383>&nbsp&nbsp&nbsp<img src="https://andyjung82.github.io/CRP558/final_project_img/pm4.JPG" width=383>
           </div>
 
           <div class="background-child">
             <h3 style="text-align: center;">Particulate Matter</h3>
             <p style="text-align: justify;">&nbsp&nbsp Particulate Matter is one of air pollution matters including ozone, carbon monoxide, and sulfur dioxide. In general, because of its very small size, a unit called micrometer (µm) is used as a measurement unit for Particulate Matter (1 µm = 1 / 1,000 mm). Particulate Matter is divided into PM10 and PM2.5 depending on its particle size. PM10 (10 µm = 1/100 mm) is similar to one-seventh of the hair diameter and PM2.5 (2.5 µm = 1/400 mm) is to one-twentieth of the hair one. Although Particulate Matter has a small size, it has negatively affected human health historically. For example, the Great Smog of London in 1952, which killed 4,000 people, is a typical instance of how Particulate Matter impacts the human body. Moreover, another case of Particulate Matter damage occurred in 1948 Donora, Pennsylvania. According to medical research, the smaller the size of Particulate Matter, the greater the impact on human health. Fine dust is absorbed into the human body through the respiratory system, in particular, finer-sized particles can easily travel to the brain along the blood vessels.</p>
+            <img src="https://andyjung82.github.io/CRP558/final_project_img/pm1.JPG" width=383>&nbsp&nbsp&nbsp<img src="https://andyjung82.github.io/CRP558/final_project_img/pm2.JPG" width=383>
           </div>
       </div>
 
+<div class="background-container">
+  <div class="background-child">
+    <h3 style="text-align: center;">Data</h3>
+    <p><strong><i>- Particulate Matter Data</i></strong></p>
+    <p style="text-align: justify;">The South Korea government has officially been measuring fine dust concentrations since 2005, and the National Statistical Office of South Korea has been providing interactive maps of the measured fine dust levels in each administrative district since 2014. Although 250 administrative districts exist at the Si-Gun-Gu levels, this project utilized the comprehensive fine dust that was measured in 158 administrative districts. That's because those 158 administrative districts had consecutive measurement results from 2014 to 2018.
+    <br>
+    <a href="https://sgis.kostat.go.kr/view/thematicMap/thematicMapMain?stat_thema_map_id=9pyrpJvwHw20160121115806991GvpLyuuwDt&theme=CTGR_005&mapType=05&CTGRS=CTGR_001:recommend,CTGR_002:recommend,CTGR_003:recommend,CTGR_004:recommend,CTGR_005:recommend"><i>> Particulate Matter Data in South Korea</i></a>
+    <br>
+    <br>
+    <strong><i>- Respiratory Disease Mortality Data</i></strong>
+    <br>
+    The record of respiratory disease mortality was collected from the Korean Statistical Information Service web site. The site categorizes the causes of death into 50 categories and provides the mortality records from 1998 to 2018. Two respiratory-related diseases were identified in the categories: pneumonia and Chronic Obstructive Pulmonary Disease (COPD). However, it cannot be identified whether fine dust directly affected respiratory-related death. Because fine dust can be a factor of other complications, this data was used for correlation analysis, not causal analysis.
+    <br>
+    <a href="http://kosis.kr/statHtml/statHtml.do?orgId=101&tblId=DT_1B34E13&conn_path=I2"><i>> Death Statistics Data in South Korea</i></a>
+    </p>
+    </div>
+  
+  <div class="background2-child">
+    <h3 style="text-align: center;">Interactive Maps</h3>
+    
+      <div id='map2'></div>
 
+         <script type="text/javascript" src="https://andyjung82.github.io/CRP558/final_project_geojson/pm/pm.geojson"></script>
 
-          <div id='map'></div>
+            <script type="text/javascript">
+
+              var map2 = L.map('map2').setView([35.65664, 127.81270], 7);
+
+              L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+                    maxZoom: 18,
+                    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+                        '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                    id: 'mapbox/light-v9',
+                    tileSize: 512,
+                    zoomOffset: -1
+                }).addTo(map2);
+
+                function color(d) {
+                    return d > 60.600001 ?'#ab4124' :
+                        d > 54.500001 ? '#bf5f3f' :
+                        d > 50.250001 ? '#cf7d5d' :
+                        d > 47.000001 ? '#e0a082' :
+                        d > 45.500001 ? '#edc3a8' :
+                        '#fae9d4';
+                }
+
+                function mystyle6(feature) {
+                    return {
+                        weight: 0.5,
+                        opacity: 1,
+                        color: 'black',
+                        fillOpacity: 1,
+                        fillColor: color(feature.properties.PM10_14)
+                    };
+                }
+
+                function mystyle7(feature) {
+                    return {
+                        weight: 0.5,
+                        opacity: 1,
+                        color: 'black',
+                        fillOpacity: 1,
+                        fillColor: color(feature.properties.PM10_15)
+                    };
+                }
+
+                function mystyle8(feature) {
+                    return {
+                        weight: 0.5,
+                        opacity: 1,
+                        color: 'black',
+                        fillOpacity: 1,
+                        fillColor: color(feature.properties.PM10_16)
+                    };
+                }
+
+              function mystyle9(feature) {
+                    return {
+                        weight: 0.5,
+                        opacity: 1,
+                        color: 'black',
+                        fillOpacity: 1,
+                        fillColor: color(feature.properties.PM10_17_18)
+                    };
+                }
+
+              function mystyle10(feature) {
+                    return {
+                        weight: 0.5,
+                        opacity: 1,
+                        color: 'black',
+                        fillOpacity: 1,
+                        fillColor: color(feature.properties.PM10_18)
+                    };
+                }
+
+                function highlightFeature(e) {
+                    var layer = e.target;
+                }
+
+                function resetHighlight(e) {
+                    geojson.resetStyle(e.target);
+                    info.update();
+                }
+
+                function zoomToFeature(e) {
+                    map.fitBounds(e.target.getBounds());
+                }
+
+                 function onEachFeature6(feature, layer) {
+                    layer.bindPopup("<strong>Observation Location </strong>" + feature.properties.SIG_ENG_NM + "<br/>" + "<strong><i>2014</i> Particulate Matter (μm) </strong>" + feature.properties.PM10_14);
+                    layer.on({
+                        mouseover: highlightFeature,
+                        mouseout: resetHighlight,
+                    });
+                }
+
+                function onEachFeature7(feature, layer) {
+                    layer.bindPopup("<strong>Observation Location </strong>" + feature.properties.SIG_ENG_NM + "<br/>" + "<strong><i>2015</i> Particulate Matter (μm) </strong>" + feature.properties.PM10_15);
+                    layer.on({
+                        mouseover: highlightFeature,
+                        mouseout: resetHighlight,
+                    });
+                }
+
+              function onEachFeature8(feature, layer) {
+                    layer.bindPopup("<strong>Observation Location </strong>" + feature.properties.SIG_ENG_NM + "<br/>" + "<strong><i>2016</i> Particulate Matter (μm) </strong>" + feature.properties.PM10_16);
+                    layer.on({
+                        mouseover: highlightFeature,
+                        mouseout: resetHighlight,
+                    });
+                }
+
+              function onEachFeature9(feature, layer) {
+                    layer.bindPopup("<strong>Observation Location </strong>" + feature.properties.SIG_ENG_NM + "<br/>" + "<strong><i>2017</i> Particulate Matter (μm) </strong>" + feature.properties.PM10_17_18);
+                    layer.on({
+                        mouseover: highlightFeature,
+                        mouseout: resetHighlight,
+                    });
+                }
+
+              function onEachFeature10(feature, layer) {
+                    layer.bindPopup("<strong>Observation Location </strong>" + feature.properties.SIG_ENG_NM + "<br/>" + "<strong><i>2018</i> Particulate Matter (μm) </strong>" + feature.properties.PM10_18);
+                    layer.on({
+                        mouseover: highlightFeature,
+                        mouseout: resetHighlight,
+                    });
+                }
+
+                var pm14 = new L.geoJson(pm, {
+                    style: mystyle6,
+                    onEachFeature: onEachFeature6
+                }).addTo(map2);
+
+                var pm15 = new L.geoJson(pm, {
+                    style: mystyle7,
+                    onEachFeature: onEachFeature7
+                }).addTo(map2);
+
+                var pm16 = new L.geoJson(pm, {
+                    style: mystyle8,
+                    onEachFeature: onEachFeature8
+                }).addTo(map2);
+
+                var pm17 = new L.geoJson(pm, {
+                    style: mystyle9,
+                    onEachFeature: onEachFeature9
+                }).addTo(map2);
+
+                var pm18 = new L.geoJson(pm, {
+                    style: mystyle10,
+                    onEachFeature: onEachFeature10
+                }).addTo(map2);
+
+                var legend2 = L.control({
+                      position: 'bottomright'
+                  });
+
+                    legend2.onAdd = function(map) {
+
+                        var div = L.DomUtil.create('div', 'info legend'),
+                            grades = [30, 45, 47, 50, 54, 60],
+                            labels = ["<b>Particulate Matter 10 <br> <i>(μm)</i></b>"],
+                            from, to;
+
+                        for (var i = 0; i < grades.length; i++) {
+                            from = grades[i];
+                            to = grades[i + 1];
+
+                            labels.push(
+                                '<i style="background:' + color(from + 1) + '"></i> ' +
+                                from + (to ? '&ndash;' + to : '-70'));
+                        }
+
+                        div.innerHTML = labels.join('<br>');
+                        return div;
+                    };
+
+                    legend2.addTo(map2);
+
+              var baseMaps2 = {
+                  "Particulate matter 2014": pm14,
+                  "Particulate matter 2015": pm15,
+                  "Particulate matter 2016": pm16,
+                  "Particulate matter 2017": pm17,
+                  "Particulate matter 2018": pm18,
+                };
+
+		L.control.layers(baseMaps2).addTo(map2);
+            </script>
+<br>
+          <div id='map1'></div>
 
             <script type="text/javascript" src="https://andyjung82.github.io/CRP558/final_project_geojson/mor/mor.geojson"></script>
 
             <script type="text/javascript">
 
-              var map = L.map('map').setView([35.65664, 127.81270], 7);
+              var map = L.map('map1').setView([35.65664, 127.81270], 7);
 
               L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
                     maxZoom: 18,
@@ -349,6 +586,163 @@
 
 		L.control.layers(baseMaps).addTo(map);
             </script>
+    </div>
+
+ <div class="background-container">
+
+   <div class="background-child">
+
+       <h3 style="text-align: center;">Scatter Plot in 2014 and 2018</h3>
+
+                <div id="my_dataviz"></div>
+
+    <script>
+
+          var margin = {top: 45, right: 30, bottom: 30, left: 30},
+              width = 800 - margin.left - margin.right,
+              height = 500 - margin.top - margin.bottom;
+
+          var svg = d3.select("#my_dataviz")
+            .append("svg")
+              .attr("width", width + margin.left + margin.right)
+              .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+              .attr("transform",
+                    "translate(" + margin.left + "," + margin.top + ")");
+
+          d3.csv("https://raw.githubusercontent.com/andyjung82/CRP558/master/final_project_csv/data_re.csv", function(data) {
+
+          var x = d3.scaleLinear()
+            .domain([25, 70])
+            .range([ 0, width ]);
+          svg.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x));
+
+          var y = d3.scaleLinear()
+            .domain([0, 350])
+            .range([ height, 0]);
+          svg.append("g")
+            .call(d3.axisLeft(y));
+
+          var tooltip = d3.select("#my_dataviz")
+            .append("div")
+            .style("opacity", 0)
+            .attr("class", "tooltip")
+            .style("background-color", "white")
+            .style("border", "solid")
+            .style("border-width", "1px")
+            .style("border-radius", "5px")
+            .style("padding", "10px")
+
+          var mouseover = function(d) {
+            tooltip
+              .style("opacity", 1)
+          }
+
+          var mousemove = function(d) {
+            tooltip
+              .html(d.SIGUNGU + "<br> <i>2018 <b>Particulate Matter:</b></i> " + d.PM10_18 + " <i>(µm)</i> <br> <i>2018 <b>Respiratory-related Mortality:</b></i> " + d.MOR_18 + " <i>(persons)</i>")
+              .style("left", (d3.mouse(this)[0]+90) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+              .style("top", (d3.mouse(this)[1]) + "px")
+          }
+
+          var mouseleave = function(d) {
+            tooltip
+              .transition()
+              .duration(200)
+              .style("opacity", 0)
+          }
+
+          svg.append('g')
+            .selectAll("dot")
+            .data(data.filter(function(d,i){return i<158})) // the .filter part is just to keep a few dots on the chart, not all of them
+            .enter()
+            .append("circle")
+              .attr("cx", function (d) { return x(d.PM10_18); } )
+              .attr("cy", function (d) { return y(d.MOR_18); } )
+              .attr("r", 6)
+              .style("fill", "#6334eb")
+              .style("opacity", 0.6)
+              .style("stroke", "white")
+            .on("mouseover", mouseover )
+            .on("mousemove", mousemove )
+            .on("mouseleave", mouseleave )
+
+          var mousemove2 = function(d) {
+            tooltip
+              .html(d.SIGUNGU + "<br> <i>2014 <b>Particulate Matter:</b></i> " + d.PM10_14 + " <i>(µm)</i> <br> <i>2014 <b>Respiratory-related Mortality:</b></i> " + d.MOR_14 + " <i>(persons)</i>")
+              .style("left", (d3.mouse(this)[0]+91) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+              .style("top", (d3.mouse(this)[1]) + "px")
+          }
+
+          var mouseleave2 = function(d) {
+            tooltip
+              .transition()
+              .duration(200)
+              .style("opacity", 0)
+          }
+
+          svg.append('g')
+            .selectAll("dot")
+            .data(data.filter(function(d,i){return i<158})) // the .filter part is just to keep a few dots on the chart, not all of them
+            .enter()
+            .append("circle")
+              .attr("cx", function (d) { return x(d.PM10_14); } )
+              .attr("cy", function (d) { return y(d.MOR_14); } )
+              .attr("r", 6)
+              .style("fill", "#e76122")
+              .style("opacity", 0.6)
+              .style("stroke", "white")
+            .on("mouseover", mouseover )
+            .on("mousemove", mousemove2 )
+            .on("mouseleave", mouseleave2 )
+
+    })
+
+    </script>
+
+     <div class="background3-child">
+       <p style="font-size:20px; color:#607D8B">&nbsp&nbsp&nbsp <b>X-axis:</b> PM <i>(µm)</i>, <b>Y-axis:</b> Mortality <i>(persons)</i></p>
+       <p style="font-size:15px; color:#e76122;">&nbsp&nbsp&nbsp● 2014 Scatter Plot (Spearman's Correlation Coefficient: -0.02)</p><p style="font-size:15px; color:#6334eb;">&nbsp&nbsp&nbsp● 2018 Scatter Plot (Spearman's Correlation Coefficient: 0.04)</p>
+       </div>
+     <p style="text-align: justify;">The scatter plot above presented the correlation between the level of fine dust concentrations and respiratory disease-related mortality in 2014 and 2018. According to the scatter plot results, there was no meaningful relationship between the pollution concentrations and mortality in 158. Therefore, based on the collected data, I concluded that the concentration of Particulate Matter is irrelevant to the number of respiratory-related deaths. However, there are definite limitations in this project analysis as follows:
+       <br>
+       <br>
+(1)	The data did not include all 250 administrative districts in South Korea. Considering that the western regions are affected by fine dust coming from other countries, analyzing with all the observation results may produce different results.
+       <br>
+       <br>
+(2)	Other variables were not controlled, which might be able to affect the respiratory disease-related death.
+       <br>
+       <br>
+(3)	The fine dust accumulation in the human body may affect after a considerable amount of time such as more than 10 years. Five years may be insufficient time to analyze its effects.
+       </p>
+
+   </div>
+   
+   <div class="background2-child">
+     <h3 style="text-align: center;">Conclusion</h3>
+            <p style="text-align: justify;">&nbsp&nbsp This project aimed to utilize interactive maps to visualize fine dust concentrations and respiratory disease-related deaths with location-based information and analyze their relationships. In order to carry out this analysis, 158 administrative districts that provide both air pollution concentrations and respiratory disease-related mortality from 2014 to 2018 were selected as target areas. The result of analyzing the correlation between the two variables showed the correlation coefficients in 2014 and 2018 were close to almost zero, which means that there is no meaningful correlation between the two variables.</p>
+     <h3 style="text-align: center;">Data Source and Reference</h3>
+            <p style="text-align: justify;"><a href="https://file.mk.co.kr/meet/neds/2019/10/image_readtop_2019_836514_15711865153938454.jpg">- Feature 1</a>
+     <br>
+     <a href="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTyPdND6sm5_26cO_aNiRYNUSFKReaSVGnhmUqdGCPbjh8goF5B&usqp=CAU">- Feature 2</a>
+     <br>
+     <a href="https://lh3.googleusercontent.com/proxy/bUIvzcfxTbSkIx75C--aght4-J1Gj0htxJBcr2LPvkF3cnShe7J-sScJ1wcgENmCJH-7ZFB8tM8MeF1S4qptCytgIyFGkwDYlSJWMjfRZKOUjVj5">- Feature 3</a>
+     <br>
+     <a href="https://scx2.b-cdn.net/gfx/news/hires/2009/tracingultra.jpg">- Feature 4</a>
+     <br>
+     <a href="https://sgis.kostat.go.kr/view/thematicMap/thematicMapMain?stat_thema_map_id=9pyrpJvwHw20160121115806991GvpLyuuwDt&theme=CTGR_005&mapType=05&CTGRS=CTGR_001:recommend,CTGR_002:recommend,CTGR_003:recommend,CTGR_004:recommend,CTGR_005:recommend">- The level of fine dust air pollution in South Korea</a>
+     <br>
+     <a href="http://kosis.kr/statHtml/statHtml.do?orgId=101&tblId=DT_1B34E13&conn_path=I2">- The reord of respiratory disease-related mortality</a>
+     <br>
+     - AirVisual. (2020). 2019 World Air Quality Report. IQAir AirVisual.
+     <br>
+     - Shin, D. C. (2007). Health effects of ambient particulate matter. Journal of the Korean Medical Association, 50(2), 175-182.
+     </p>
+     </div>
+   
+   
 </body>
 
 </html>
