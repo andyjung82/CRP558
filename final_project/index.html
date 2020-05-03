@@ -19,12 +19,12 @@
         }
 
         .container {
-            max-width: 1500px;
+            max-width: 900px;
             margin: auto;
         }
 
         .nav-item {
-            width: 150%;
+            width: 100%;
             height: 50px;
             padding: 0;
             margin: 0;
@@ -58,59 +58,18 @@
             background: #ffffff;
         }
 
-            .all-contents {
-              height: 1000px;
-              margin-top: 5pc;
-              display: flex;
-            }
-
-
-            .intro-contents {
-              margin-top: 5pc;
-              display: flex;
-            }
 
             .background-container {
-              width: 50%;
+              padding: 5px;
             }
 
-            .background-container {
-              display: flex;
-              flex-direction: column;
-            }
-            .background-container {
-              border-radius: 3px;
-            }
-            .background-container {
-              background: #f2f2f2;
-              padding: 20px;
-              border-radius: 3px;
-              color: #4e4e4e
-            }
-            .background-container {
-              margin: 5px 1pc;
+            .background-child {
+              width: 47%;
+              float: left;
+              margin-right: 10px;
+              margin-left: 10px;
             }
 
-            .pm-container {
-              width: 50%;
-            }
-
-            .pm-container {
-              display: flex;
-              flex-direction: column;
-            }
-            .pm-container {
-              border-radius: 3px;
-            }
-            .pm-container {
-              background: #f2f2f2;
-              padding: 20px;
-              border-radius: 3px;
-              color: #4e4e4e
-            }
-            .pm-container {
-              margin: 5px 1pc;
-            }
 
         h1,
         h2,
@@ -159,7 +118,7 @@
             background: rgba(255,255,255,0.8);
             box-shadow: 0 0 15px rgba(0,0,0,0.2);
             border-radius: 5px;
-          width: 150px;
+            width: 150px;
         }
         .info h4 {
             margin: 0 0 5px;
@@ -186,26 +145,20 @@
       <br>
 
       <div class="background-container">
-        <div class="background">
-          <h3 style="text-align: center;">Project Background</h3>
-          <p style="text-align: justify;">&nbsp&nbsp Air pollution has been recently recognized as a severe issue in South Korea. Since the Korean government officially started observing Particulate Matter (PM) in 2005, the level of air quality marked the worst in March 2019. In addition, Greenpeace’s analysis of the 2019 World Air Quality Report not only indicated that the Korean annual-average fine PM concentrations were the highest level among OECD member countries but also highlighted that the level has been continuously increasing. Therefore, it is expected that the increasing pollutants have been being combined with air stagnation from Urban Heat Island, resulting in a serious public health issue. According to Shin (2017), micron particle-sized fine dust can be associated with stroke and respiratory disease by accumulating in the brain and lungs.
-<br>
-&nbsp&nbsp Despite those health concerns, there is not enough data on how the micron-sized particles had affected respiratory disease-related death. To address this issue, it is necessary to accumulate the long-term data associated with fine dust particulate and respiratory disease. This project is the very starting point for analyzing the relationships. Therefore, this project aims to visualize not only fine dust and mortality data but also the result of the correlation analysis.
-          </p>
-        </div>
+          <div class="background-child">
+            <h3 style="text-align: center;">Background</h3>
+            <p style="text-align: justify;">&nbsp&nbsp Air pollution has been recently recognized as a severe urban issue in South Korea. Since the Korean government started official observation of  Particulate Matter (PM) in 2005, the level of air quality was marked as the worst ever in March 2019. In addition, Greenpeace not only indicated that the Korean annual-average fine dust concentrations were the highest level among OECD member countries in 2019 but also highlighted that the level has been continuously increasing. However, this is not just a matter of fine dust. Given the increase in the Urban Heat Island intensity, it is expected that the increased pollutants have been being combined with the air stagnation phenomenon, resulting in a serious public health issue. According to a medical report, micro particle-sized fine dust can be associated with stroke and respiratory disease by accumulating in the brain and lungs. Despite those health concerns, there is not enough data on how the micro-sized particles had affected respiratory disease-related death in South Korea. Therefore, this project aims to visualize the fine dust and mortality data in South Korea and to analyze the correlation.</p>
+          </div>
+
+          <div class="background-child">
+            <h3 style="text-align: center;">Particulate Matter</h3>
+            <p style="text-align: justify;">&nbsp&nbsp Particulate Matter is one of air pollution matters including ozone, carbon monoxide, and sulfur dioxide. In general, because of its very small size, a unit called micrometer (µm) is used as a measurement unit for Particulate Matter (1 µm = 1 / 1,000 mm). Particulate Matter is divided into PM10 and PM2.5 depending on its particle size. PM10 (10 µm = 1/100 mm) is similar to one-seventh of the hair diameter and PM2.5 (2.5 µm = 1/400 mm) is to one-twentieth of the hair one. Although Particulate Matter has a small size, it has negatively affected human health historically. For example, the Great Smog of London in 1952, which killed 4,000 people, is a typical instance of how Particulate Matter impacts the human body. Moreover, another case of Particulate Matter damage occurred in 1948 Donora, Pennsylvania. According to medical research, the smaller the size of Particulate Matter, the greater the impact on human health. Fine dust is absorbed into the human body through the respiratory system, in particular, finer-sized particles can easily travel to the brain along the blood vessels.</p>
+          </div>
       </div>
 
-  <div class="pm-container">
-        <div class="background">
-          <h3 style="text-align: center;">Project Background</h3>
-          <p style="text-align: justify;">&nbsp&nbsp Air pollution has been recently recognized as a severe issue in South Korea. Since the Korean government officially started observing Particulate Matter (PM) in 2005, the level of air quality marked the worst in March 2019. In addition, Greenpeace’s analysis of the 2019 World Air Quality Report not only indicated that the Korean annual-average fine PM concentrations were the highest level among OECD member countries but also highlighted that the level has been continuously increasing. Therefore, it is expected that the increasing pollutants have been being combined with air stagnation from Urban Heat Island, resulting in a serious public health issue. According to Shin (2017), micron particle-sized fine dust can be associated with stroke and respiratory disease by accumulating in the brain and lungs.
-<br>
-&nbsp&nbsp Despite those health concerns, there is not enough data on how the micron-sized particles had affected respiratory disease-related death. To address this issue, it is necessary to accumulate the long-term data associated with fine dust particulate and respiratory disease. This project is the very starting point for analyzing the relationships. Therefore, this project aims to visualize not only fine dust and mortality data but also the result of the correlation analysis.
-          </p>
-        </div>
-      </div>
 
-            <div id='map'></div>
+
+          <div id='map'></div>
 
             <script type="text/javascript" src="https://andyjung82.github.io/CRP558/final_project_geojson/mor/mor.geojson"></script>
 
