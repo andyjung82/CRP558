@@ -320,7 +320,7 @@
                 }
 
                  function onEachFeature6(feature, layer) {
-                    layer.bindPopup("<strong>Observation Location </strong>" + feature.properties.SIG_ENG_NM + "<br/>" + "<strong><i>2014</i> Particulate Matter (μm) </strong>" + feature.properties.PM10_14);
+                    layer.bindPopup("<strong>Observation Location </strong>" + feature.properties.SIG_ENG_NM + "<br/>" + "<strong><i>2014</i> Particulate Matter (㎍/㎥) </strong>" + feature.properties.PM10_14);
                     layer.on({
                         mouseover: highlightFeature,
                         mouseout: resetHighlight,
@@ -328,7 +328,7 @@
                 }
 
                 function onEachFeature7(feature, layer) {
-                    layer.bindPopup("<strong>Observation Location </strong>" + feature.properties.SIG_ENG_NM + "<br/>" + "<strong><i>2015</i> Particulate Matter (μm) </strong>" + feature.properties.PM10_15);
+                    layer.bindPopup("<strong>Observation Location </strong>" + feature.properties.SIG_ENG_NM + "<br/>" + "<strong><i>2015</i> Particulate Matter (㎍/㎥) </strong>" + feature.properties.PM10_15);
                     layer.on({
                         mouseover: highlightFeature,
                         mouseout: resetHighlight,
@@ -336,7 +336,7 @@
                 }
 
               function onEachFeature8(feature, layer) {
-                    layer.bindPopup("<strong>Observation Location </strong>" + feature.properties.SIG_ENG_NM + "<br/>" + "<strong><i>2016</i> Particulate Matter (μm) </strong>" + feature.properties.PM10_16);
+                    layer.bindPopup("<strong>Observation Location </strong>" + feature.properties.SIG_ENG_NM + "<br/>" + "<strong><i>2016</i> Particulate Matter (㎍/㎥) </strong>" + feature.properties.PM10_16);
                     layer.on({
                         mouseover: highlightFeature,
                         mouseout: resetHighlight,
@@ -344,7 +344,7 @@
                 }
 
               function onEachFeature9(feature, layer) {
-                    layer.bindPopup("<strong>Observation Location </strong>" + feature.properties.SIG_ENG_NM + "<br/>" + "<strong><i>2017</i> Particulate Matter (μm) </strong>" + feature.properties.PM10_17_18);
+                    layer.bindPopup("<strong>Observation Location </strong>" + feature.properties.SIG_ENG_NM + "<br/>" + "<strong><i>2017</i> Particulate Matter (㎍/㎥) </strong>" + feature.properties.PM10_17_18);
                     layer.on({
                         mouseover: highlightFeature,
                         mouseout: resetHighlight,
@@ -352,7 +352,7 @@
                 }
 
               function onEachFeature10(feature, layer) {
-                    layer.bindPopup("<strong>Observation Location </strong>" + feature.properties.SIG_ENG_NM + "<br/>" + "<strong><i>2018</i> Particulate Matter (μm) </strong>" + feature.properties.PM10_18);
+                    layer.bindPopup("<strong>Observation Location </strong>" + feature.properties.SIG_ENG_NM + "<br/>" + "<strong><i>2018</i> Particulate Matter (㎍/㎥) </strong>" + feature.properties.PM10_18);
                     layer.on({
                         mouseover: highlightFeature,
                         mouseout: resetHighlight,
@@ -392,7 +392,7 @@
 
                         var div = L.DomUtil.create('div', 'info legend'),
                             grades = [30, 45, 47, 50, 54, 60],
-                            labels = ["<b>Particulate Matter 10 <br> <i>(μm)</i></b>"],
+                            labels = ["<b>Fine Dust Concentration <br> <i>(㎍/㎥)</i></b>"],
                             from, to;
 
                         for (var i = 0; i < grades.length; i++) {
