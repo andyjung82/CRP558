@@ -238,6 +238,14 @@
                     tileSize: 512,
                     zoomOffset: -1
                 }).addTo(map2);
+              
+              var Stamen_TonerLabels = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-labels/{z}/{x}/{y}{r}.{ext}', {
+	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+	subdomains: 'abcd',
+	minZoom: 0,
+	maxZoom: 20,
+	ext: 'png'
+});
 
                 function color(d) {
                     return d > 60.600001 ?'#ab4124' :
@@ -410,8 +418,13 @@
                   "Particulate matter 2018": pm18,
                 };
 
-		L.control.layers(baseMaps2).addTo(map2);
-            </script>
+              var overlayMaps2 = {
+                    "Label": Stamen_TonerLabels,
+                };
+
+		L.control.layers(baseMaps2, overlayMaps2).addTo(map2);
+            
+    </script>
 <br>
           <div id='map1'></div>
 
@@ -576,7 +589,7 @@
 
                         var div = L.DomUtil.create('div', 'info legend'),
                             grades = [6, 60, 85, 125, 167, 194],
-                            labels = ["<b>Respiratory Diseases Mortality <br> <i>(persons)</i></b>"],
+                            labels = ["<b>Pneumonia and COPD Mortality <br> <i>(persons)</i></b>"],
                             from, to;
 
                         for (var i = 0; i < grades.length; i++) {
@@ -601,8 +614,12 @@
                   "Respiratory Diseases Mortality 2017": mor17,
                   "Respiratory Diseases Mortality 2018": mor18,
                 };
+              
+              var overlayMaps = {
+                    "Label": Stamen_TonerLabels,
+                };
 
-		L.control.layers(baseMaps).addTo(map);
+		L.control.layers(baseMaps, overlayMaps).addTo(map);
             </script>
     </div>
 
